@@ -1,0 +1,22 @@
+/* Estilo da página CMS - Produto */
+
+#titulo_gerenciamento {
+	float: right;
+	position: relative;
+	top: 150px;
+	padding-right: 40px;
+	color: #fff;
+	text-shadow: 1px 1px #000;
+	background: url(../Imagens/bag.png);
+	background-size: 30px;
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.opcoes:hover{
+	background: linear-gradient(#C9E6E9, #A4D5DA);
+}
+
+.opcoes a {
+	color: #000;
+}

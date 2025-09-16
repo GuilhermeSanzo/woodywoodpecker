@@ -1,0 +1,261 @@
+/* Estilo Geral do Sistema de Gerenciamento da Woody Woodpecker */
+
+/* Cabeçalho */
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana;
+}
+
+header {
+	width: 100%;
+	height: 100px;
+	background-color: #48A7AF;
+}
+
+body {
+	background: linear-gradient(#bfbfbf, #999999);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position:center;
+}
+
+#corpo {
+	width: 1000px;
+	height: 1000px;
+	margin: auto;
+}
+
+footer {
+	width: 100%;
+	height: 200px;
+	background-color: #48A7AF;
+}
+
+/* Cabeçalho */
+
+#centraliza_cabecalho {
+	width: 1000px;
+	height: inherit;
+	margin: auto;
+}
+
+#centraliza_cabecalho img {
+	float: left;
+	width: 100px;
+	position: relative;
+	top: 20px;
+}
+
+#centraliza_cabecalho h1 {
+	float: left;
+	position: relative;
+	left: 40px;
+	top: 30px;	
+}
+
+#centraliza_cabecalho h1 a {
+	color: #fff;
+	text-shadow: 1px 1px #000;
+	text-decoration: none;
+}
+
+
+/* Menu */
+
+#menu {
+	width: 996px;
+	height: 100px;
+	margin: auto;
+	background-color: #fff;
+}
+
+#menu ul {
+	width: 1000px;
+	height: 100px;
+	float: left;
+}
+
+#menu ul li {
+	float: left;
+	width: 249px;
+	height: 100px;
+	list-style-type: none;
+}
+
+#menu ul li:hover {
+	background: linear-gradient(#c9e6e9, #a4d5da);
+}
+
+.menu-ativo {
+	background: linear-gradient(#c9e6e9, #a4d5da);
+}
+
+#menu ul li a {
+	width: 150px;
+	height: 90px;
+	color: black;
+	text-decoration: none;
+}
+
+#menu ul li a img {
+	position: relative;
+	left: 90px;
+}
+
+#menu ul li a p {
+	text-align: center;
+	min-width: 180px;
+}
+
+.cx_menu {
+	width: 100%;
+	height: 100%;
+}
+
+.cx_menu:active, #menu ul li {
+	border: none;
+}
+
+/* Usuario logado */
+
+#usuario_logado {
+	width: 355px;
+	height: 100px;
+	float: right;
+}
+
+#usuario_logado p {
+	width: 355px;
+	/*text-align: right;*/
+	position: relative;
+	left: -2px;
+	top: 10px;
+	display: inline-block;
+}
+
+#usuario_logado img {
+	float: right;
+	width: 40px;
+	height: 40px;
+	top: -20px;
+	outline: 1px solid #449DA5;
+}
+
+#usuario_logado input {
+	clear: both;
+	float: right;
+	position: relative;
+	top: 10px;
+}
+
+
+/* Conteúdo */
+
+#titulo_pagina {
+	margin: 10px 0;
+}
+
+.opcoes {
+	background-color: #fff;
+	width: 329px;
+	max-width: 328px;
+	height: 300px;
+	display: inline-block;
+	position: relative;
+	top: 30px;
+	margin-top: 2px;
+	
+}
+
+.opcoes .cx_opcao {
+	width: 300px;
+	height: 100px;
+	border-bottom: 1px solid black;
+}
+
+.opcoes img {
+	float: left;
+	position: relative;
+	top: 15px;
+	left: 15px;
+}
+
+.opcoes p {
+	float: left;
+	position: relative;
+	top: 40px;
+	left: 30px;
+}
+
+.opcoes .gerenciamento {
+	float: left;
+	position: relative;
+	top: 10px;
+	left: 10px;
+}
+
+.opcoes .gerenciamento li {
+	list-style-type: none;
+	padding-top: 5px;
+}
+
+
+#imagem_gerenciamento {
+	position: relative;
+	top: 22px;
+	left: 10px;
+}
+
+/* Rodapé */
+
+#centraliza_rodape {
+	width: 1000px;
+	height: 200px;
+	margin: auto;
+}
+
+
+/* Consulta */
+#consulta {
+	float: left;
+	width: 1000px;
+	overflow-x: auto;
+}
+#tblconsulta {
+	border-collapse: collapse;
+	max-width: 1000px;
+}
+#tblconsulta tr td {
+	border: 1px solid black;
+}
+#tblconsulta th {
+	color: #13838D;
+	text-shadow: 1px 1px black;
+	max-width: 1000px;
+	border: 1px solid black;
+}
+#tblconsulta tbody tr td {
+	padding: 1px 5px 1px 5px;
+}
+
+/* Estilização dos links (opções) */
+.linha_opcoes {
+	background-color: #5ED0DA;
+}
+
+.linha_opcoes:hover, .linha_opcoes:hover > .opcoes_link {
+	background-color: #1a1a1a;
+	color: #ffffff;
+}
+
+.opcoes_link {
+	color: #024B72;
+	text-decoration: none;
+}
+
+
+.opcoes_link:hover {
+	color: #fff;
+}

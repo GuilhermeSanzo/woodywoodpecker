@@ -1,0 +1,73 @@
+@media only screen and (min-device-width: 1024px) {
+
+#corpo {
+	max-height: 600px;
+}
+
+#principal {
+	margin-top: 50px;
+	width: 100%;
+	max-height: 600px;
+	left: 0px;
+}
+
+#cx_login {
+	margin: auto;
+	width: 400px;
+}
+
+#cx_login img {
+	padding: 0 10px;
+    width: 200px;
+    position: relative;
+    left: 90px;
+}
+
+#cx_login h1 {
+	font-size: 38px;
+	font-weight: normal;
+	color: #3f959c;
+	text-align: center;
+	text-shadow: 1px 1px #000000;
+}
+
+#tabela_login {
+	width: 350px;
+	font-family: Verdana;
+	margin: auto;
+	background-color: #ffffff;
+	padding: 15px;
+	position: relative;
+    top: 25px;
+}
+
+#tabela_login label	{
+	font-size: 12px;
+	position: relative;
+	top: 5px;
+	color: #4d4d4d;
+}
+
+
+#tabela_login tr td{
+	padding: 5px;
+}
+
+#tabela_login input[type="text"], input[type="password"] {
+	padding: 5px;
+	width: 340px;
+}
+
+
+#btn_entrar {
+	padding: 10px;
+	align: center;
+	width: 100%;
+	margin: auto;
+	font-weight: bold;
+	background-color: #48a7af;
+	color: #ffffff;
+	margin: 10px 0;
+}
+
+}

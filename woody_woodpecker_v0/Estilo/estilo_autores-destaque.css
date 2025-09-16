@@ -1,0 +1,10 @@
+/* Estilo da página - Autores em Destaque */
+
+.produtos img {
+	width: 100px;
+	height: 127px;
+	float: left;
+	position: relative;
+	top: 5px;
+	left: 50px;
+}

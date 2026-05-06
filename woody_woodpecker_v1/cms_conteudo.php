@@ -44,14 +44,14 @@ if (empty($_SESSION["login"])) {
 <head>
 	<title>CMS Woody Woodpecker</title>
 	<meta charset="utf-8">
-	<link type="image/x-icon" rel="shortcut icon" href="Imagens/shortcut_icon.png">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_geral.css">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_cms-conteudo.css">
+	<link type="image/x-icon" rel="shortcut icon" href="/public/images/admin/shortcut_icon.png">
+	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_geral.css">
+	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_cms-conteudo.css">
 </head>
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="Imagens/woody_woodpecker_logo.png" alt="Logo"></a>
+			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
 			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
@@ -68,7 +68,7 @@ if (empty($_SESSION["login"])) {
 				<li class="menu-ativo">					
 					<a href="cms_conteudo.php">
 						<div class="cx_menu">
-							<img src="Imagens/content.png" alt="Administração de Conteúdo">
+							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
 						</div>
 					</a>
@@ -76,7 +76,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_fale-conosco.php">
 						<div class="cx_menu">
-							<img src="Imagens/headset.png" alt="Administração do Fale Conosco">
+							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
 						</div>
 					</a>
@@ -84,7 +84,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_produto.php">
 						<div class="cx_menu">
-							<img src="Imagens/bag.png" alt="Administração dos Produtos">
+							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
 						</div>
 					</a>
@@ -92,7 +92,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_usuarios.php">
 						<div class="cx_menu">
-							<img src="Imagens/user.png" alt="Administração de Usuários">
+							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>
 						</div>
 					</a>
@@ -103,7 +103,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="conteudo_autores-destaque.php">
 					<div class="cx_opcao">
-						<img src="Imagens/author.png" alt="Autores em Destaque">
+						<img src="/public/images/admin/author.png" alt="Autores em Destaque">
 						<p>Autores em Destaque</p>
 					</div>
 					<ul class="gerenciamento">
@@ -117,7 +117,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="conteudo_promocoes.php">
 					<div class="cx_opcao">
-						<img src="Imagens/gender.png" alt="Promoções">
+						<img src="/public/images/admin/gender.png" alt="Promoções">
 						<p>Promocões</p>
 					</div>
 					<ul class="gerenciamento">
@@ -131,7 +131,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="conteudo_sobre.php">
 					<div class="cx_opcao">
-						<img src="Imagens/about.png" alt="Sobre">
+						<img src="/public/images/admin/about.png" alt="Sobre">
 						<p>Sobre</p>
 					</div>
 					<ul class="gerenciamento">
@@ -145,7 +145,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="conteudo_nossas-lojas.php">
 					<div class="cx_opcao">
-						<img src="Imagens/store.png" alt="Nossas Lojas">
+						<img src="/public/images/admin/store.png" alt="Nossas Lojas">
 						<p>Nossas Lojas</p>
 					</div>
 					<ul class="gerenciamento">
@@ -159,7 +159,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="conteudo_livro-mes.php">
 					<div class="cx_opcao">
-						<img src="Imagens/book.png" alt="Livro do Mês">
+						<img src="/public/images/admin/book.png" alt="Livro do Mês">
 						<p>Livro do Mês</p>
 					</div>
 					<ul class="gerenciamento">

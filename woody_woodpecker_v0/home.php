@@ -45,10 +45,10 @@ $_SESSION["login"] = $login;
 <html>
 <head>
 	<title>Woody Woodpecker</title>
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_geral.css">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_home.css">
-	<link rel="stylesheet" type="text/css" href="Estilo/mobile/estilo_home.css">
-	<link type="image/x-icon" rel="shortcut icon" href="Imagens/shortcut_icon.png">
+	<link type="text/css" rel="stylesheet" href="/public/css/site/estilo_geral.css">
+	<link type="text/css" rel="stylesheet" href="/public/css/site/estilo_home.css">
+	<link rel="stylesheet" type="text/css" href="/public/css/site/mobile/estilo_home.css">
+	<link type="image/x-icon" rel="shortcut icon" href="/public/images/site/shortcut_icon.png">
     <script type="text/javascript" src="Efeitos/jquery-2.1.3.js"></script>
 	<!--<script type="text/javascript" src="Efeitos/efeito.js"></script>-->
     <meta charset="utf-8">
@@ -64,7 +64,7 @@ $_SESSION["login"] = $login;
 		width: 100%;
 		height: 100%;
 		background-color: #000;
-		background-image: url('Imagens/loader.gif');
+		background-image: url('/public/images/site/loader.gif');
 		background-size: auto;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -78,7 +78,7 @@ $_SESSION["login"] = $login;
 	<header>
 		<div id="centraliza_cabecalho">
 			<!-- Logo da página -->
-			<a href="home.php" id="logo"><img src="Imagens/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker"></a>
+			<a href="home.php" id="logo"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker"></a>
 			
 			<!-- Novas caixas para entrada -->
 			<div class="caixa_entrada">
@@ -174,7 +174,7 @@ $_SESSION["login"] = $login;
 		<div id="rodape">
 			<div id="lado1">
 				<div id="rodape_logo">
-					<a href="home.php"><img src="Imagens/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker">
+					<a href="home.php"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker">
 					<h2>Woody Woodpecker</h2>
 					</a>
 				</div>
@@ -214,7 +214,7 @@ $_SESSION["login"] = $login;
 	                </ul>
 	            </div>
 	            <div id="patrocinios">
-	                <img src="Imagens/patrocinios.png" alt="Patrocínios">
+	                <img src="/public/images/site/patrocinios.png" alt="Patrocínios">
 	            </div>
 	        </div>
 	        <div id="copyright">

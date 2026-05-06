@@ -33,14 +33,14 @@ if (empty($_SESSION["login"])) {
 <head>
 	<title>CMS Woody Woodpecker</title>
 	<meta charset="utf-8">
-	<link type="image/x-icon" rel="shortcut icon" href="Imagens/shortcut_icon.png">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_geral.css">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_home.css">
+	<link type="image/x-icon" rel="shortcut icon" href="/public/images/admin/shortcut_icon.png">
+	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_geral.css">
+	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_home.css">
 </head>
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="Imagens/woody_woodpecker_logo.png" alt="Logo"></a>
+			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
 			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
@@ -57,7 +57,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_conteudo.php">
 						<div class="cx_menu">
-							<img src="Imagens/content.png" alt="Administração de Conteúdo">
+							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
 						</div>
 					</a>
@@ -65,7 +65,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_fale-conosco.php">
 						<div class="cx_menu">
-							<img src="Imagens/headset.png" alt="Administração do Fale Conosco">
+							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
 						</div>
 					</a>
@@ -73,7 +73,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_produto.php">
 						<div class="cx_menu">
-							<img src="Imagens/bag.png" alt="Administração dos Produtos">
+							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
 						</div>
 					</a>
@@ -81,7 +81,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_usuarios.php">
 						<div class="cx_menu">
-							<img src="Imagens/user.png" alt="Administração de Usuários">
+							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>
 						</div>
 					</a>
@@ -92,7 +92,7 @@ if (empty($_SESSION["login"])) {
 			<div id="cx_apresentacao">
 				<h1 class="titulo">Bem vindo: <?php echo $_SESSION["nome"]; ?></h1>
 				<h3 class="subtitulo">ao CMS da Woody Woodpecker</h3>
-				<img class="logo_apresentacao" src="Imagens/big_logo.png" alt="Logo">
+				<img class="logo_apresentacao" src="/public/images/admin/big_logo.png" alt="Logo">
 				<h3 class="subtitulo">Abaixo segue a lista das seções onde você tem permissão de acesso</h3>
 
 				<!-- Precisa ser trocado -->
@@ -111,7 +111,7 @@ if (empty($_SESSION["login"])) {
 				?>
 				<div class="opcoes">
 					<div class="cx_opcao">
-						<img src="Imagens/content.png" alt="Sobre">
+						<img src="/public/images/admin/content.png" alt="Sobre">
 						<p>Adm. de Conteúdo</p>
 					</div>
 				</div>
@@ -121,7 +121,7 @@ if (empty($_SESSION["login"])) {
 				?>
 				<div class="opcoes">
 					<div class="cx_opcao">
-						<img src="Imagens/headset.png" alt="Sobre">
+						<img src="/public/images/admin/headset.png" alt="Sobre">
 						<p>Adm. de Fale Conosco</p>
 					</div>
 				</div>
@@ -131,7 +131,7 @@ if (empty($_SESSION["login"])) {
 				?>
 				<div class="opcoes">
 					<div class="cx_opcao">
-						<img src="Imagens/bag.png" alt="Sobre">
+						<img src="/public/images/admin/bag.png" alt="Sobre">
 						<p>Adm. de Produtos</p>
 					</div>
 				</div>
@@ -141,7 +141,7 @@ if (empty($_SESSION["login"])) {
 				?>
 				<div class="opcoes">
 					<div class="cx_opcao">
-						<img src="Imagens/user.png" alt="Sobre">
+						<img src="/public/images/admin/user.png" alt="Sobre">
 						<p>Adm. de Usuários</p>
 					</div>
 				</div>

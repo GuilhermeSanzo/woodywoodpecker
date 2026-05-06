@@ -44,9 +44,9 @@ if (empty($_SESSION["login"])) {
 <head>
 	<title>CMS Woody Woodpecker</title>
 	<meta charset="utf-8">
-	<link type="image/x-icon" rel="shortcut icon" href="Imagens/shortcut_icon.png">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_geral.css">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_cms-produto.css">
+	<link type="image/x-icon" rel="shortcut icon" href="/public/images/admin/shortcut_icon.png">
+	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_geral.css">
+	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_cms-produto.css">
 
 	<!-- Efeito / Estilo das Tabs -->
 	<link rel="stylesheet" href="Efeitos/jquery-ui/jquery-ui.css">
@@ -56,7 +56,7 @@ if (empty($_SESSION["login"])) {
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="Imagens/woody_woodpecker_logo.png" alt="Logo"></a>
+			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
 			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
@@ -73,7 +73,7 @@ if (empty($_SESSION["login"])) {
 				<li>					
 					<a href="cms_conteudo.php">
 						<div class="cx_menu">
-							<img src="Imagens/content.png" alt="Administração de Conteúdo">
+							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
 						</div>
 					</a>
@@ -81,7 +81,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_fale-conosco.php">
 						<div class="cx_menu">
-							<img src="Imagens/headset.png" alt="Administração do Fale Conosco">
+							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
 						</div>
 					</a>
@@ -89,7 +89,7 @@ if (empty($_SESSION["login"])) {
 				<li class="menu-ativo">
 					<a href="cms_produto.php">
 						<div class="cx_menu">
-							<img src="Imagens/bag.png" alt="Administração dos Produtos">
+							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
 						</div>
 					</a>
@@ -97,7 +97,7 @@ if (empty($_SESSION["login"])) {
 				<li>
 					<a href="cms_usuarios.php">
 						<div class="cx_menu">
-							<img src="Imagens/user.png" alt="Administração de Usuários">
+							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>
 						</div>
 					</a>
@@ -108,7 +108,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="produto_livro.php">
 					<div class="cx_opcao">
-						<img src="Imagens/book.png" alt="Livros">
+						<img src="/public/images/admin/book.png" alt="Livros">
 						<p>Livros</p>
 					</div>
 					<ul class="gerenciamento">
@@ -122,7 +122,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="produto_autor.php">
 					<div class="cx_opcao">
-						<img src="Imagens/author.png" alt="Autores">
+						<img src="/public/images/admin/author.png" alt="Autores">
 						<p>Autores</p>
 					</div>
 					<ul class="gerenciamento">
@@ -136,7 +136,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="produto_genero.php">
 					<div class="cx_opcao">
-						<img src="Imagens/gender.png" alt="Gêneros">
+						<img src="/public/images/admin/gender.png" alt="Gêneros">
 						<p>Gêneros</p>
 					</div>
 					<ul class="gerenciamento">
@@ -150,7 +150,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="produto_distribuidora.php">
 					<div class="cx_opcao">
-						<img src="Imagens/truck.png" alt="Distribuidoras">
+						<img src="/public/images/admin/truck.png" alt="Distribuidoras">
 						<p>Distribuidoras</p>
 					</div>
 					<ul class="gerenciamento">
@@ -164,7 +164,7 @@ if (empty($_SESSION["login"])) {
 			<div class="opcoes">
 				<a href="produto_editora.php">
 					<div class="cx_opcao">
-						<img src="Imagens/publisher.png" alt="Editora">
+						<img src="/public/images/admin/publisher.png" alt="Editora">
 						<p>Editoras</p>
 					</div>
 					<ul class="gerenciamento">

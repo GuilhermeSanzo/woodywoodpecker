@@ -159,16 +159,16 @@
 
 <div class="container">
     <div id="slides">
-      <img src="Imagens/Banner/banner_site1.jpg" alt="Primeiro Banner">
-      <img src="Imagens/Banner/banner_site2.jpg" alt="Segunda Banner">
-      <img src="Imagens/Banner/banner_site3.jpg" alt="Terceiro Banner">
-      <img src="Imagens/Banner/banner_site4.jpg" alt="Quarto Banner">
-      <img src="Imagens/Banner/banner_site5.jpg" alt="Quinto Banner">
-      <img src="Imagens/Banner/banner_site6.jpg" alt="Sexto Banner">
-      <img src="Imagens/Banner/banner_site7.jpg" alt="Sétimo Banner">
-      <img src="Imagens/Banner/banner_site8.jpg" alt="Oitavo Banner">
-      <img src="Imagens/Banner/banner_site9.jpg" alt="Nono Banner">
-      <img src="Imagens/Banner/banner_site10.jpg" alt="Décimo Banner">
+      <img src="/public/images/site/Banner/banner_site1.jpg" alt="Primeiro Banner">
+      <img src="/public/images/site/Banner/banner_site2.jpg" alt="Segunda Banner">
+      <img src="/public/images/site/Banner/banner_site3.jpg" alt="Terceiro Banner">
+      <img src="/public/images/site/Banner/banner_site4.jpg" alt="Quarto Banner">
+      <img src="/public/images/site/Banner/banner_site5.jpg" alt="Quinto Banner">
+      <img src="/public/images/site/Banner/banner_site6.jpg" alt="Sexto Banner">
+      <img src="/public/images/site/Banner/banner_site7.jpg" alt="Sétimo Banner">
+      <img src="/public/images/site/Banner/banner_site8.jpg" alt="Oitavo Banner">
+      <img src="/public/images/site/Banner/banner_site9.jpg" alt="Nono Banner">
+      <img src="/public/images/site/Banner/banner_site10.jpg" alt="Décimo Banner">
     </div>
 </div>
 

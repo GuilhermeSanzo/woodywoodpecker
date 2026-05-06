@@ -42,15 +42,15 @@ $_SESSION["login"] = $login;
 <head>
 	<title>CMS Woody Woodpecker</title>
 	<meta charset="utf-8">
-	<link type="image/x-icon" rel="shortcut icon" href="Imagens/shortcut_icon.png">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_geral.css">
-	<link type="text/css" rel="stylesheet" href="Estilo/estilo_error.css">
+	<link type="image/x-icon" rel="shortcut icon" href="/public/images/admin/shortcut_icon.png">
+	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_geral.css">
+	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_error.css">
 </head>
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
 			<div id="cx_logo_cms">
-				<a href="../woody_woodpecker_v0/home.php"><img src="Imagens/woody_woodpecker_logo.png" alt="Logo"></a>
+				<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
 				<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
 			</div>
 			<form id="formulario_login" method="post">
@@ -63,7 +63,7 @@ $_SESSION["login"] = $login;
 		</div>
 	</header>
 	<section id="corpo">
-		<img src="Imagens/error.png" alt="Error" id="img_erro">
+		<img src="/public/images/admin/error.png" alt="Error" id="img_erro">
 		<h2>Você está tentando acessar uma página restrita</h2>
 		<p>Faça o login, ou clique <a href="../woody_woodpecker_v0/home.php">aqui</a> para voltar à página inicial</p>
 	</section>

@@ -1,7 +1,7 @@
 <?php
 
 /* Conexão com o banco de dados */
-include "../conexao.php";
+include "../src/database.php";
 
 $_SESSION["login"] = "";
 

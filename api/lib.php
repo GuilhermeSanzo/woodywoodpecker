@@ -1,6 +1,6 @@
 <?php 
 
-	require_once __DIR__ . '/../conexao.php';
+	require_once __DIR__ . '/../src/database.php';
 
 	$sql = "select l.*, a.nome as autor, d.nome as distribuidora, e.nome as editora 
 	from livro as l

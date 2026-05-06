@@ -1,6 +1,6 @@
 <?php 
 
-include "../conexao.php";
+include "../src/database.php";
 
 if(isset($_REQUEST["btn_entrar"])) {
 

@@ -43,7 +43,7 @@ class BookSeeder extends Seeder
                 'title' => $book[1],
                 'subtitle' => $book[2],
                 'description' => $book[3],
-                'image' => $book[4],
+                'image' => str_replace('Arquivos/', 'uploads/', $book[4]),
                 'author_id' => $book[5],
                 'genre_id' => $book[6],
                 'distributor_id' => $book[7],

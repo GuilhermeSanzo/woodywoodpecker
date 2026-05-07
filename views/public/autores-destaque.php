@@ -1,6 +1,8 @@
-<?php 
+<?php
 
-include "../src/database.php";
+/* Conexão com o banco de dados */
+include __DIR__ . "/../../src/database.php";
+
 
 if(isset($_REQUEST["btn_entrar"])) {
 
@@ -9,18 +11,19 @@ $senha = $_REQUEST["senha"];
 
 $_SESSION["login"] = $login;
 
+
 	$sql = " select u.*, tu.tipo from usuario as u inner join tipo_usuario as tu on(u.codTipoUsuario = tu.codTipoUsuario) where login = '".$login."' and senha = '".$senha."' ";
 	$verificacao = mysql_query($sql);
 	
 	
 	if ($rs = mysql_fetch_array($verificacao)) {		
 		$_SESSION["nome"] = $rs["nome"];
-		$_SESSION["imagem"] = $rs["imagem"];
 
-		header("location:../woody_woodpecker_v1/home.php");
+		header("location: /views/admin/home.php");
 	} else {
 		echo("<script>alert('O nome de usuario ou a senha está errada!')</script>");
 	}
+
 
 }
 
@@ -29,11 +32,12 @@ $_SESSION["login"] = $login;
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Woody Woodpecker</title>
+	<title>Autores em Destaque - Woody Woodpecker</title>
 	<link type="text/css" rel="stylesheet" href="/public/css/site/estilo_geral.css">
-	<link type="text/css" rel="stylesheet" href="/public/css/site/estilo_login.css">
+	<link type="text/css" rel="stylesheet" href="/public/css/site/estilo_autores-destaque.css">
 	<link type="image/x-icon" rel="shortcut icon" href="/public/images/site/shortcut_icon.png">
-    <script type="text/javascript" src="Efeitos/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="/views/public/Efeitos/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="/views/public/Efeitos/efeito.js"></script>
     <meta charset="utf-8">
 </head>
 <body>
@@ -41,49 +45,82 @@ $_SESSION["login"] = $login;
 	<header>
 		<div id="centraliza_cabecalho">
 			<!-- Logo da página -->
-			<a href="home.php" id="logo"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker"></a>
+			<a href="/" id="logo"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker"></a>
+			<!-- Caixa de pesquisa -->
+			<form id="formulario_pesquisa">
+				<input type="text" name="pesquisa" placeholder="Pesquisar">	
+				<input type="submit" name="btn_pesquisa" value="&nbsp;">
+			</form>
+			<!-- Novas caixas para entrada -->
+			<div class="caixa_entrada">
+				<a href="#">Cadastrar</a>
+			</div>
+			<div class="caixa_entrada">
+				<a href="/views/public/login.php">Login</a>
+			</div>
+			<!-- Menu de navegação -->
 			<nav id="menu">
 				<ul>
-					<li><a href="home.php" class="menu_page">Home</a></li>
-					<li><a href="autores-destaque.php">Autores em destaque</a></li>
-					<li><a href="sobre.php">Sobre</a></li>
-					<li><a href="promocoes.php">Promoções</a></li>
-					<li><a href="nossas-lojas.php">Nossas Lojas</a></li>
-					<li><a href="livro-mes.php">Livro do mês</a></li>
-					<li><a href="fale-conosco.php">Fale conosco</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="/views/public/autores-destaque.php" class="menu_page">Autores em destaque</a></li>
+					<li><a href="/views/public/sobre.php">Sobre</a></li>
+					<li><a href="/views/public/promocoes.php">Promoções</a></li>
+					<li><a href="/views/public/nossas-lojas.php">Nossas Lojas</a></li>
+					<li><a href="/views/public/livro-mes.php">Livro do mês</a></li>
+					<li><a href="/views/public/fale-conosco.php">Fale conosco</a></li>
 				</ul>
 		  </nav>
 		</div>
 	</header>
 	<!-- Corpo da página -->
 	<section id="corpo">
+		<!-- Banner -->
+		<?php 
+
+		include __DIR__ . "/php/slider.php";
+
+		?>
+		<!-- Barra lateral -->
+		<?php 
+
+		include __DIR__ . "/php/barra_categorias.php";
+
+		?>
 		<!-- Conteúdo principal -->
 		<section id="principal">
-			<div id="cx_login">
-				<img id="icon_login" src="/public/images/admin/big_logo.png" alt="Icon" title="Livraria Woody Woodpecker" width="200px">
-				<h1>Login</h1>
+			<h3>Autores em Destaque</h3>
+			<!-- Primeira lista -->
+			<div class="produtos">
+				<img src="/public/images/site/Autores/Tolkien.jpg" alt="Autor">
+				<ul>
+					<li><strong>Nome:</strong> J.R.R. Tolkien</li>
+					<li><strong>Obras:</strong> O Senhor dos Anéis, O Hobbit, O Silmarillion</li>
+					<li><strong>Gênero:</strong> Fantasia</li>
+				</ul>
+				<a href="#" title="Detalhes">Detalhes</a>
 			</div>
-			<form method="post">
-				<table id="tabela_login">
-					<tbody>
-						<tr>
-							<td><label>Nome de Usuário</label></td>
-						</tr>
-						<tr>
-							<td><input type="text" name="usuario" required></td>
-						</tr>
-						<tr>
-							<td><label>Senha</label></td>
-						</tr>
-						<tr>
-							<td><input type="password" name="senha" required></td>
-						</tr>
-						<tr>
-							<td><input type="submit" name="btn_entrar" id="btn_entrar" value="Entrar"></td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
+			<?php 
+				$sql = "select ad.*, a.* from autor_destaque as ad inner join autor as a on(ad.cod_autor = a.cod_autor) where status = 1 order by cod_autor_destaque desc";
+
+				$select = mysql_query($sql);
+
+				while ($rs = mysql_fetch_array($select)) {
+
+			?>
+			<div class="produtos">
+				<img src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $rs['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $rs['imagem']) ?>">
+				<ul>
+					<li><strong>Nome:</strong> <?php echo($rs["conhecido"]) ?></li>
+					<li><strong>Obras:</strong> O Senhor dos Anéis, O Hobbit, O Silmarillion</li>
+					<li><strong>Gênero:</strong> Fantasia</li>
+				</ul>
+				<a href="#" title="Detalhes">Detalhes</a>
+			</div>
+			<?php
+
+				}
+
+			?>
 		</section>
 	</section>
 	<!-- Redes Sociais -->
@@ -97,8 +134,9 @@ $_SESSION["login"] = $login;
 		<div id="rodape">
 			<div id="lado1">
 				<div id="rodape_logo">
-					<a href="home.php"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker">
-					<h2>Woody Woodpecker</h2>
+					<a href="/">
+						<img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker">
+						<h2>Woody Woodpecker</h2>
 					</a>
 				</div>
 	            <div id="sitemap">

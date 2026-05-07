@@ -1,7 +1,7 @@
 <?php 
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 
 // Autenticação do Usuário
@@ -25,7 +25,7 @@ if (empty($_SESSION["login"])) {
 		<script>
 			var certeza_logout = confirm('Tem certeza que deseja sair?');
 			if (certeza_logout == true) {
-				document.location = '../woody_woodpecker_v0/home.php';
+				document.location = '/';
 			} 
 		</script>
 
@@ -53,7 +53,7 @@ if (empty($_SESSION["login"])) {
 
 		//echo($sql);
 		mysql_query($sql);
-		header("location:produto_genero.php");
+		header("location: /views/admin/produto_genero.php");
 
 	}
 
@@ -65,7 +65,7 @@ if (empty($_SESSION["login"])) {
 			$codigo = $_REQUEST['codigo'];
 			$sql = "delete from genero where cod_genero=".$codigo."";
 			mysql_query($sql);
-			header("location:produto_genero.php");
+			header("location: /views/admin/produto_genero.php");
 		}
 
 		if ($modo == "editar") {
@@ -101,9 +101,9 @@ if (empty($_SESSION["login"])) {
 	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_cms-produto.css">
 
 	<!-- Efeito / Estilo do Accordion -->
-	<link rel="stylesheet" href="Efeitos/jquery-ui/jquery-ui.css">
-	<script src="Efeitos/jquery-1.10.2.js"></script>
-	<script src="Efeitos/jquery-ui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/views/admin/Efeitos/jquery-ui/jquery-ui.css">
+	<script src="/views/admin/Efeitos/jquery-1.10.2.js"></script>
+	<script src="/views/admin/Efeitos/jquery-ui/jquery-ui.js"></script>
 
 	<script>
 	  	$(function() {
@@ -114,12 +114,12 @@ if (empty($_SESSION["login"])) {
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
-			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
+			<a href="/"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
+			<h1><a href="/views/admin/home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
 					<p>Bem vindo, <?php echo($_SESSION["nome"]) ?></p>
-					<img id="img_perfil" src="<?php echo($_SESSION['imagem']) ?>" alt="<?php echo($_SESSION['imagem']) ?>">
+					<img id="img_perfil" src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>">
 					<input type="submit" name="btn_logout" id="btn_logout" value="Logout">
 				</div>
 			</form>
@@ -129,7 +129,7 @@ if (empty($_SESSION["login"])) {
 		<nav id="menu">
 			<ul>
 				<li>					
-					<a href="cms_conteudo.php">
+					<a href="/views/admin/cms_conteudo.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
@@ -137,7 +137,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_fale-conosco.php">
+					<a href="/views/admin/cms_fale-conosco.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
@@ -145,7 +145,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li class="menu-ativo">
-					<a href="cms_produto.php">
+					<a href="/views/admin/cms_produto.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
@@ -153,7 +153,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_usuarios.php">
+					<a href="/views/admin/cms_usuarios.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>
@@ -223,10 +223,10 @@ if (empty($_SESSION["login"])) {
 										<td><?php echo($rs['nome']) ?></td>
 
 										<td class="linha_opcoes">
-											<a class="opcoes_link" href="produto_genero.php?modo=excluir&codigo=<?php echo($rs['cod_genero']) ?>">Excluir</a>					
+											<a class="opcoes_link" href="/views/admin/produto_genero.php?modo=excluir&codigo=<?php echo($rs['cod_genero']) ?>">Excluir</a>					
 										</td>
 										<td class="linha_opcoes">
-											<a class="opcoes_link" href="produto_genero.php?modo=editar&codigo=<?php echo($rs['cod_genero']) ?>">Editar</a>
+											<a class="opcoes_link" href="/views/admin/produto_genero.php?modo=editar&codigo=<?php echo($rs['cod_genero']) ?>">Editar</a>
 										</td>
 									</tr>
 									<?php

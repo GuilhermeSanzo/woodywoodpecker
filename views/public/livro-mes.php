@@ -1,7 +1,7 @@
 <?php
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 
 if(isset($_REQUEST["btn_entrar"])) {
@@ -19,7 +19,7 @@ $_SESSION["login"] = $login;
 	if ($rs = mysql_fetch_array($verificacao)) {		
 		$_SESSION["nome"] = $rs["nome"];
 
-		header("location:../woody_woodpecker_v1/home.php");
+		header("location: /views/admin/home.php");
 	} else {
 		echo("<script>alert('O nome de usuario ou a senha está errada!')</script>");
 	}
@@ -32,12 +32,12 @@ $_SESSION["login"] = $login;
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Autores em Destaque - Woody Woodpecker</title>
+	<title>Livro do Mês - Woody Woodpecker</title>
 	<link type="text/css" rel="stylesheet" href="/public/css/site/estilo_geral.css">
-	<link type="text/css" rel="stylesheet" href="/public/css/site/estilo_autores-destaque.css">
+	<link rel="stylesheet" type="text/css" href="/public/css/site/estilo_livro-mes.css">
 	<link type="image/x-icon" rel="shortcut icon" href="/public/images/site/shortcut_icon.png">
-	<script type="text/javascript" src="Efeitos/jquery-2.1.3.js"></script>
-	<script type="text/javascript" src="Efeitos/efeito.js"></script>
+	<script type="text/javascript" src="/views/public/Efeitos/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="/views/public/Efeitos/efeito.js"></script>
     <meta charset="utf-8">
 </head>
 <body>
@@ -45,8 +45,9 @@ $_SESSION["login"] = $login;
 	<header>
 		<div id="centraliza_cabecalho">
 			<!-- Logo da página -->
-			<a href="home.php" id="logo"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker"></a>
+			<a href="/" id="logo"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker"></a>
 			<!-- Caixa de pesquisa -->
+			
 			<form id="formulario_pesquisa">
 				<input type="text" name="pesquisa" placeholder="Pesquisar">	
 				<input type="submit" name="btn_pesquisa" value="&nbsp;">
@@ -56,18 +57,18 @@ $_SESSION["login"] = $login;
 				<a href="#">Cadastrar</a>
 			</div>
 			<div class="caixa_entrada">
-				<a href="login.php">Login</a>
+				<a href="/views/public/login.php">Login</a>
 			</div>
 			<!-- Menu de navegação -->
 			<nav id="menu">
 				<ul>
-					<li><a href="home.php">Home</a></li>
-					<li><a href="autores-destaque.php" class="menu_page">Autores em destaque</a></li>
-					<li><a href="sobre.php">Sobre</a></li>
-					<li><a href="promocoes.php">Promoções</a></li>
-					<li><a href="nossas-lojas.php">Nossas Lojas</a></li>
-					<li><a href="livro-mes.php">Livro do mês</a></li>
-					<li><a href="fale-conosco.php">Fale conosco</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="/views/public/autores-destaque.php">Autores em destaque</a></li>
+					<li><a href="/views/public/sobre.php">Sobre</a></li>
+					<li><a href="/views/public/promocoes.php">Promoções</a></li>
+					<li><a href="/views/public/nossas-lojas.php">Nossas Lojas</a></li>
+					<li><a href="/views/public/livro-mes.php" class="menu_page">Livro do mês</a></li>
+					<li><a href="/views/public/fale-conosco.php">Fale conosco</a></li>
 				</ul>
 		  </nav>
 		</div>
@@ -77,42 +78,41 @@ $_SESSION["login"] = $login;
 		<!-- Banner -->
 		<?php 
 
-		include "php/slider.php";
+		include __DIR__ . "/php/slider.php";
 
 		?>
 		<!-- Barra lateral -->
 		<?php 
 
-		include "php/barra_categorias.php";
+		include __DIR__ . "/php/barra_categorias.php";
 
 		?>
 		<!-- Conteúdo principal -->
 		<section id="principal">
-			<h3>Autores em Destaque</h3>
+			<h3>Livros do mês</h3>
 			<!-- Primeira lista -->
-			<div class="produtos">
-				<img src="/public/images/site/Autores/Tolkien.jpg" alt="Autor">
-				<ul>
-					<li><strong>Nome:</strong> J.R.R. Tolkien</li>
-					<li><strong>Obras:</strong> O Senhor dos Anéis, O Hobbit, O Silmarillion</li>
-					<li><strong>Gênero:</strong> Fantasia</li>
-				</ul>
-				<a href="#" title="Detalhes">Detalhes</a>
-			</div>
 			<?php 
-				$sql = "select ad.*, a.* from autor_destaque as ad inner join autor as a on(ad.cod_autor = a.cod_autor) where status = 1 order by cod_autor_destaque desc";
+				$sql = "select lm.*, l.*, a.conhecido as autor, g.nome as genero from livro_mes as lm 
+				inner join livro as l on(lm.cod_livro = l.cod_livro)
+				inner join autor as a on(l.cod_autor = a.cod_autor)
+				inner join genero as g on(l.cod_genero = g.cod_genero)
+				where status = 1 order by cod_livro_mes desc";
 
 				$select = mysql_query($sql);
 
 				while ($rs = mysql_fetch_array($select)) {
 
+				$traco = null;
+				if ($rs["subtitulo"] != null) {
+					$traco = " - ";
+				}
 			?>
 			<div class="produtos">
-				<img src="../woody_woodpecker_v1/<?php echo($rs['imagem']) ?>" alt="<?php echo($rs['imagem']) ?>">
+				<img src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $rs['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $rs['imagem']) ?>">
 				<ul>
-					<li><strong>Nome:</strong> <?php echo($rs["conhecido"]) ?></li>
-					<li><strong>Obras:</strong> O Senhor dos Anéis, O Hobbit, O Silmarillion</li>
-					<li><strong>Gênero:</strong> Fantasia</li>
+					<li><strong>Título:</strong> <?php echo($rs["titulo"] . $traco . $rs["subtitulo"])?></li>
+					<li><strong>Autor:</strong> <?php echo($rs["autor"]) ?></li>
+					<li><strong>Gênero:</strong> <?php echo($rs["genero"]) ?></li>
 				</ul>
 				<a href="#" title="Detalhes">Detalhes</a>
 			</div>
@@ -122,7 +122,7 @@ $_SESSION["login"] = $login;
 
 			?>
 		</section>
-	</section>
+	</section>	
 	<!-- Redes Sociais -->
 	<div id="redes_sociais">
 		<div id="facebook"></div>
@@ -134,7 +134,7 @@ $_SESSION["login"] = $login;
 		<div id="rodape">
 			<div id="lado1">
 				<div id="rodape_logo">
-					<a href="home.php">
+					<a href="/">
 						<img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker">
 						<h2>Woody Woodpecker</h2>
 					</a>

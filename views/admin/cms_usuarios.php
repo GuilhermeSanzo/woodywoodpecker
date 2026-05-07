@@ -1,7 +1,7 @@
 <?php 
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 
 // Autenticação de usuário
@@ -25,7 +25,7 @@ if (empty($_SESSION["login"])) {
 		<script>
 			var certeza_logout = confirm('Tem certeza que deseja sair?');
 			if (certeza_logout == true) {
-				document.location = '../woody_woodpecker_v0/home.php';
+				document.location = '/';
 			} 
 		</script>
 
@@ -56,7 +56,7 @@ if (empty($_SESSION["login"])) {
 		$senha = $_REQUEST['txt_senha'];
 		$tipo_usuario = $_REQUEST['txt_tipo_usuario'];
 		
-		$upload_dir = "Arquivos/";
+		$upload_dir = "/public/images/uploads/";
 		
 		$nome_arq = basename($_FILES["arq_foto"]["name"]);
 		
@@ -82,7 +82,7 @@ if (empty($_SESSION["login"])) {
 		}
 		
 		mysql_query($sql);
-		header("location:cms_usuarios.php");
+		header("location: /views/admin/cms_usuarios.php");
 	}
 	
 	if (isset($_REQUEST['modo'])) {
@@ -92,7 +92,7 @@ if (empty($_SESSION["login"])) {
 			$codigo = $_REQUEST['codigo'];
 			$sql = "delete from usuario where codUsuario=".$codigo."";
 			mysql_query($sql);
-			header("location:cms_usuarios.php");
+			header("location: /views/admin/cms_usuarios.php");
 		}
 
 		if ($modo == "editar") {
@@ -129,7 +129,7 @@ if (empty($_SESSION["login"])) {
 			$sql = "update tipo_usuario set tipo = '".$tipo."' where codTipoUsuario = ".$_SESSION['codigo2']."";
 		}
 		mysql_query($sql);
-		header("location:cms_usuarios.php");
+		header("location: /views/admin/cms_usuarios.php");
 	}
 	
 	if (isset($_REQUEST['modo2'])) {
@@ -139,7 +139,7 @@ if (empty($_SESSION["login"])) {
 			$codigo2 = $_REQUEST['codigo2'];
 			$sql = "delete from tipo_usuario where codTipoUsuario=".$codigo2."";
 			mysql_query($sql);
-			header("location:cms_usuarios.php");
+			header("location: /views/admin/cms_usuarios.php");
 		}
 
 		if ($modo2 == "editar") {
@@ -175,9 +175,9 @@ if (empty($_SESSION["login"])) {
 	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_cms-usuarios.css">
 	
 	<!-- Efeito / Estilo das Tabs -->
-	<link rel="stylesheet" href="Efeitos/jquery-ui/jquery-ui.css">
-	<script src="Efeitos/jquery-1.10.2.js"></script>
-	<script src="Efeitos/jquery-ui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/views/admin/Efeitos/jquery-ui/jquery-ui.css">
+	<script src="/views/admin/Efeitos/jquery-1.10.2.js"></script>
+	<script src="/views/admin/Efeitos/jquery-ui/jquery-ui.js"></script>
 
 	<script>
 	  	$(function() {
@@ -199,12 +199,12 @@ if (empty($_SESSION["login"])) {
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
-			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
+			<a href="/"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
+			<h1><a href="/views/admin/home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
 					<p>Bem vindo, <?php echo($_SESSION["nome"]) ?></p>
-					<img id="img_perfil" src="<?php echo($_SESSION['imagem']) ?>" alt="<?php echo($_SESSION['imagem']) ?>">
+					<img id="img_perfil" src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>">
 					<input type="submit" name="btn_logout" id="btn_logout" value="Logout">
 				</div>
 			</form>
@@ -214,7 +214,7 @@ if (empty($_SESSION["login"])) {
 		<nav id="menu">
 			<ul>
 				<li>					
-					<a href="cms_conteudo.php">
+					<a href="/views/admin/cms_conteudo.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
@@ -222,7 +222,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_fale-conosco.php">
+					<a href="/views/admin/cms_fale-conosco.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
@@ -230,7 +230,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_produto.php">
+					<a href="/views/admin/cms_produto.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
@@ -238,7 +238,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li class="menu-ativo">
-					<a href="cms_usuarios.php">
+					<a href="/views/admin/cms_usuarios.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>
@@ -312,7 +312,7 @@ if (empty($_SESSION["login"])) {
 									<?php if ($imagem != null) { ?>
 									<tr>
 										<td>Foto atual:</td>
-										<td><img src="<?php echo($imagem); ?>" alt="<?php echo($imagem);?>" style="width:200px;"></td>
+										<td><img src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $imagem) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $imagem) ?>" style="width:200px;"></td>
 									</tr>
 									<?php } ?>
 									<tr>
@@ -357,10 +357,10 @@ if (empty($_SESSION["login"])) {
 									<td><?php echo($rs['tipo']) ?></td>
 
 									<td class="linha_opcoes">
-										<a class="opcoes_link" href="cms_usuarios.php?modo=excluir&codigo=<?php echo($rs['codUsuario']) ?>">Excluir</a>					
+										<a class="opcoes_link" href="/views/admin/cms_usuarios.php?modo=excluir&codigo=<?php echo($rs['codUsuario']) ?>">Excluir</a>					
 									</td>
 									<td class="linha_opcoes">
-										<a class="opcoes_link" href="cms_usuarios.php?modo=editar&codigo=<?php echo($rs['codUsuario']) ?>">Editar</a>
+										<a class="opcoes_link" href="/views/admin/cms_usuarios.php?modo=editar&codigo=<?php echo($rs['codUsuario']) ?>">Editar</a>
 									</td>
 								</tr>
 								<?php
@@ -425,10 +425,10 @@ if (empty($_SESSION["login"])) {
 									<td><?php echo($rs['tipo']) ?></td>
 
 									<td class="linha_opcoes">
-										<a class="opcoes_link" href="cms_usuarios.php?modo2=excluir&codigo2=<?php echo($rs['codTipoUsuario']) ?>">Excluir</a>					
+										<a class="opcoes_link" href="/views/admin/cms_usuarios.php?modo2=excluir&codigo2=<?php echo($rs['codTipoUsuario']) ?>">Excluir</a>					
 									</td>
 									<td class="linha_opcoes">
-										<a class="opcoes_link" href="cms_usuarios.php?modo2=editar&codigo2=<?php echo($rs['codTipoUsuario']) ?>">Editar</a>
+										<a class="opcoes_link" href="/views/admin/cms_usuarios.php?modo2=editar&codigo2=<?php echo($rs['codTipoUsuario']) ?>">Editar</a>
 									</td>
 								</tr>
 								<?php

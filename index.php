@@ -1,4 +1,7 @@
 <?php
-    header('Location: /woody_woodpecker_v0/home.php', true, 302);
-    exit;
+    /**
+     * Entry point for the Woody Woodpecker Bookstore.
+     * Properly requiring the public home view.
+     */
+    require_once __DIR__ . '/views/public/home.php';
 ?>

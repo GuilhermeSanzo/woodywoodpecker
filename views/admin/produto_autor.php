@@ -1,7 +1,7 @@
 <?php 
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 
 // Autenticação do Usuário
@@ -25,7 +25,7 @@ if (empty($_SESSION["login"])) {
 		<script>
 			var certeza_logout = confirm('Tem certeza que deseja sair?');
 			if (certeza_logout == true) {
-				document.location = '../woody_woodpecker_v0/home.php';
+				document.location = '/';
 			} 
 		</script>
 
@@ -64,7 +64,7 @@ if (empty($_SESSION["login"])) {
 		$data_morte_sql = date('Y-m-d', strtotime($data_morte_replace));
 
 		// Upload do diretório
-		$upload_dir = "Arquivos/";
+		$upload_dir = "/public/images/uploads/";
 
 		// Nome do arquivo
 		$nome_arq = basename($_FILES["arq_foto"]["name"]);
@@ -76,7 +76,7 @@ if (empty($_SESSION["login"])) {
 
 		if ($_REQUEST['btn_enviar'] == "Salvar") {
 			if (strstr($nome_arq, ".png") || strstr($nome_arq, ".jpg")) {
-				if (move_uploaded_file($_FILES["arq_foto"]["tmp_name"], $upload_file)) {
+				if (move_uploaded_file($_FILES["arq_foto"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $upload_file)) {
 					// Enviando dados de forma diferente, caso o autor tenha morrido
 					if ($data_morte != null) {
 						$sql = "insert into autor (nome, conhecido, imagem, data_nasc, data_morte, descricao) values ('".$nome."', '".$conhecido."', '".$upload_file."', '".$data_nasc_sql."', '".$data_morte_sql."', '".$descricao."')";
@@ -90,9 +90,9 @@ if (empty($_SESSION["login"])) {
 				// Foto padrão, caso não tenha foto
 				// Enviando dados de forma diferente, caso o autor tenha morrido
 				if ($data_morte != null) {
-					$sql = "insert into autor (nome, conhecido, imagem, data_nasc, data_morte, descricao) values ('".$nome."', '".$conhecido."', 'Arquivos/imagem_padrao.jpg', '".$data_nasc_sql."', '".$data_morte_sql."', '".$descricao."')";
+					$sql = "insert into autor (nome, conhecido, imagem, data_nasc, data_morte, descricao) values ('".$nome."', '".$conhecido."', '/public/images/uploads/imagem_padrao.jpg', '".$data_nasc_sql."', '".$data_morte_sql."', '".$descricao."')";
 				} else {
-					$sql = "insert into autor (nome, conhecido, imagem, data_nasc, descricao) values ('".$nome."', '".$conhecido."', 'Arquivos/imagem_padrao.jpg', '".$data_nasc_sql."','".$descricao."')";
+					$sql = "insert into autor (nome, conhecido, imagem, data_nasc, descricao) values ('".$nome."', '".$conhecido."', '/public/images/uploads/imagem_padrao.jpg', '".$data_nasc_sql."','".$descricao."')";
 				}
 				
 			}
@@ -102,7 +102,7 @@ if (empty($_SESSION["login"])) {
 		// Editando os arquivos
 		if ($_REQUEST['btn_enviar'] == 'Editar') {
 			if (strstr($nome_arq, ".png") || strstr($nome_arq, ".jpg")) {
-				if (move_uploaded_file($_FILES["arq_foto"]["tmp_name"], $upload_file)) {
+				if (move_uploaded_file($_FILES["arq_foto"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $upload_file)) {
 					// Enviando dados de forma diferente, caso o autor tenha morrido
 					if ($data_morte != null) {
 						$sql = "update autor set nome = '".$nome."', conhecido = '".$conhecido."', imagem = '".$upload_file."', data_nasc = '".$data_nasc_sql."', data_morte = '".$data_morte_sql."', descricao = '".$descricao."' where cod_autor = ".$_SESSION['codigo']."";
@@ -123,7 +123,7 @@ if (empty($_SESSION["login"])) {
 
 		//echo($sql);
 		mysql_query($sql);
-		header("location:produto_autor.php");
+		header("location: /views/admin/produto_autor.php");
 
 	}
 
@@ -134,7 +134,7 @@ if (empty($_SESSION["login"])) {
 			$codigo = $_REQUEST['codigo'];
 			$sql = "delete from autor where cod_autor=".$codigo."";
 			mysql_query($sql);
-			header("location:produto_autor.php");
+			header("location: /views/admin/produto_autor.php");
 		}
 
 		if ($modo == "editar") {
@@ -174,16 +174,16 @@ if (empty($_SESSION["login"])) {
 	<link type="image/x-icon" rel="shortcut icon" href="/public/images/admin/shortcut_icon.png">
 	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_geral.css">
 	<link type="text/css" rel="stylesheet" href="/public/css/admin/estilo_cms-produto.css">
-	<script type="text/javascript" src="Efeitos/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="/views/admin/Efeitos/jquery-2.1.3.js"></script>
 
 	<!-- Caixa do Upload -->
-	<link href="Efeitos/jQuery.filer-1.0.5/css/jquery.filer.css" type="text/css" rel="stylesheet" />
-	<link href="Efeitos/jQuery.filer-1.0.5/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
-	<script src="Efeitos/jQuery.filer-1.0.5/js/jquery.filer.min.js"></script>
+	<link href="/views/admin/Efeitos/jQuery.filer-1.0.5/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+	<link href="/views/admin/Efeitos/jQuery.filer-1.0.5/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+	<script src="/views/admin/Efeitos/jQuery.filer-1.0.5/js/jquery.filer.min.js"></script>
 
 	<!-- jQuery do tipo data -->
-	<link rel="stylesheet" href="Efeitos/jquery-ui/jquery-ui.css">
-	<script src="Efeitos/jquery-ui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/views/admin/Efeitos/jquery-ui/jquery-ui.css">
+	<script src="/views/admin/Efeitos/jquery-ui/jquery-ui.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -256,12 +256,12 @@ if (empty($_SESSION["login"])) {
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
-			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
+			<a href="/"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
+			<h1><a href="/views/admin/home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
 					<p>Bem vindo, <?php echo($_SESSION["nome"]) ?></p>
-					<img id="img_perfil" src="<?php echo($_SESSION['imagem']) ?>" alt="<?php echo($_SESSION['imagem']) ?>">
+					<img id="img_perfil" src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>">
 					<input type="submit" name="btn_logout" id="btn_logout" value="Logout">
 				</div>
 			</form>
@@ -271,7 +271,7 @@ if (empty($_SESSION["login"])) {
 		<nav id="menu">
 			<ul>
 				<li>					
-					<a href="cms_conteudo.php">
+					<a href="/views/admin/cms_conteudo.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
@@ -279,7 +279,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_fale-conosco.php">
+					<a href="/views/admin/cms_fale-conosco.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
@@ -287,7 +287,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li class="menu-ativo">
-					<a href="cms_produto.php">
+					<a href="/views/admin/cms_produto.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
@@ -295,7 +295,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_usuarios.php">
+					<a href="/views/admin/cms_usuarios.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>
@@ -346,7 +346,7 @@ if (empty($_SESSION["login"])) {
 							<?php if ($imagem != null) { ?>
 							<tr>
 								<td>Foto atual:</td>
-								<td><img src="<?php echo($imagem); ?>" alt="<?php echo($imagem);?>" style="width:200px;"></td>
+								<td><img src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $imagem) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $imagem) ?>" style="width:200px;"></td>
 							</tr>
 							<?php } ?>
 							<tr>
@@ -396,16 +396,16 @@ if (empty($_SESSION["login"])) {
 						<tr>
 							<td><?php echo($rs['nome']) ?></td>
 							<td><?php echo($rs['conhecido']) ?></td>
-							<td><img src="<?php echo($rs['imagem']) ?>" alt="<?php echo($rs['imagem']) ?>" style="width: 60px;"></td>
+							<td><img src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $rs['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $rs['imagem']) ?>" style="width: 60px;"></td>
 							<td><?php echo(date( 'd/m/Y', strtotime( $rs['data_nasc']) ) ) ?></td>
 							<td><?php if ($rs['data_morte'] != null) echo(date( 'd/m/Y', strtotime( $rs['data_morte']) ) ) ?></td>
 							<td><?php echo($rs['descricao']) ?></td>
 
 							<td class="linha_opcoes">
-								<a class="opcoes_link" href="produto_autor.php?modo=excluir&codigo=<?php echo($rs['cod_autor']) ?>">Excluir</a>					
+								<a class="opcoes_link" href="/views/admin/produto_autor.php?modo=excluir&codigo=<?php echo($rs['cod_autor']) ?>">Excluir</a>					
 							</td>
 							<td class="linha_opcoes">
-								<a class="opcoes_link" href="produto_autor.php?modo=editar&codigo=<?php echo($rs['cod_autor']) ?>">Editar</a>
+								<a class="opcoes_link" href="/views/admin/produto_autor.php?modo=editar&codigo=<?php echo($rs['cod_autor']) ?>">Editar</a>
 							</td>
 						</tr>
 						<?php

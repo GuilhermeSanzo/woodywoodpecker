@@ -32,7 +32,7 @@ if (isset($_REQUEST["categoria"])) {
 
 	?>
 	<div class="caixa_barra">
-		<a href="home.php?categoria=<?php echo($rs["cod_genero"]) ?>">
+		<a href="/?categoria=<?php echo($rs["cod_genero"]) ?>">
 			<h4 class="titulos_barra"> <?php echo($rs["nome"]) ?> </h4>
 		</a>
 	</div>

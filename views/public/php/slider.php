@@ -1,5 +1,5 @@
-<script src="Efeitos/SlidesJS/source/jquery.slides.js"></script>
-<link rel="stylesheet" type="text/css" href="Efeitos/SlidesJS/examples/playing/css/font-awesome.min.css">
+<script src="/views/public/Efeitos/SlidesJS/source/jquery.slides.js"></script>
+<link rel="stylesheet" type="text/css" href="/views/public/Efeitos/SlidesJS/examples/playing/css/font-awesome.min.css">
 
 <!-- SlidesJS Optional: If you'd like to use this design -->
   <style>
@@ -21,7 +21,7 @@
     a.slidesjs-previous,
     a.slidesjs-play,
     a.slidesjs-stop {
-      background-image: url(Efeitos/SlidesJS/examples/playing/img/btns-next-prev.png);
+      background-image: url(/views/public/Efeitos/SlidesJS/examples/playing/img/btns-next-prev.png);
       background-repeat: no-repeat;
       display:block;
       width:12px;
@@ -83,7 +83,7 @@
       width: 13px;
       height: 0;
       padding-top: 13px;
-      background-image: url(Efeitos/SlidesJS/examples/playing/img/pagination.png);
+      background-image: url(/views/public/Efeitos/SlidesJS/examples/playing/img/pagination.png);
       background-position: 0 0;
       float: left;
       overflow: hidden;

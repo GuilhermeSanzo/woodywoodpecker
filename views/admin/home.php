@@ -1,11 +1,11 @@
 <?php 
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 
 if (empty($_SESSION["login"])) {
-	echo "<script> alert('Você está tentando acessar uma página restrita'); location = 'error.php' </script>";
+	echo "<script> alert('Você está tentando acessar uma página restrita'); location = '/views/admin/error.php' </script>";
 } else {
 
 	if (isset($_REQUEST["btn_logout"])) {
@@ -14,7 +14,7 @@ if (empty($_SESSION["login"])) {
 		<script>
 			var certeza_logout = confirm('Tem certeza que deseja sair?');
 			if (certeza_logout == true) {
-				document.location = '../woody_woodpecker_v0/home.php';
+				document.location = '/';
 			} 
 		</script>
 
@@ -40,12 +40,12 @@ if (empty($_SESSION["login"])) {
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
-			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
+			<a href="/"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
+			<h1><a href="/views/admin/home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
 					<p>Bem vindo, <?php echo($_SESSION["nome"]) ?></p>
-					<img id="img_perfil" src="<?php echo($_SESSION['imagem']) ?>" alt="<?php echo($_SESSION['imagem']) ?>">
+					<img id="img_perfil" src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>">
 					<input type="submit" name="btn_logout" id="btn_logout" value="Logout">
 				</div>
 			</form>
@@ -55,7 +55,7 @@ if (empty($_SESSION["login"])) {
 		<nav id="menu">
 			<ul>
 				<li>
-					<a href="cms_conteudo.php">
+					<a href="/views/admin/cms_conteudo.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
@@ -63,7 +63,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_fale-conosco.php">
+					<a href="/views/admin/cms_fale-conosco.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
@@ -71,7 +71,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_produto.php">
+					<a href="/views/admin/cms_produto.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
@@ -79,7 +79,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_usuarios.php">
+					<a href="/views/admin/cms_usuarios.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>

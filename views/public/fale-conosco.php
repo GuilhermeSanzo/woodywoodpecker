@@ -1,7 +1,7 @@
 <?php
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 //Codigo para inserir no Banco de Dados
 if(isset($_REQUEST["btnSalvar"])){
@@ -43,7 +43,7 @@ $_SESSION["login"] = $login;
 	if ($rs = mysql_fetch_array($verificacao)) {		
 		$_SESSION["nome"] = $rs["nome"];
 
-		header("location:../woody_woodpecker_v1/home.php");
+		header("location: /views/admin/home.php");
 	} else {
 		echo("<script>alert('O nome de usuario ou a senha está errada!')</script>");
 	}
@@ -60,8 +60,8 @@ $_SESSION["login"] = $login;
 	<link type="text/css" rel="stylesheet" href="/public/css/site/estilo_geral.css">
 	<link rel="stylesheet" type="text/css" href="/public/css/site/estilo_fale-conosco.css">
 	<link type="image/x-icon" rel="shortcut icon" href="/public/images/site/shortcut_icon.png">
-	<script type="text/javascript" src="Efeitos/jquery-2.1.3.js"></script>
-	<script type="text/javascript" src="Efeitos/efeito.js"></script>
+	<script type="text/javascript" src="/views/public/Efeitos/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="/views/public/Efeitos/efeito.js"></script>
 	<!-- Espaço deixado para criação dos efeitos JavaScript -->
     <script>
     function rg(objeto) {
@@ -146,7 +146,7 @@ $_SESSION["login"] = $login;
 	<header>
 		<div id="centraliza_cabecalho">
 			<!-- Logo da página -->
-			<a href="home.php" id="logo"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker"></a>
+			<a href="/" id="logo"><img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker"></a>
 			<!-- Caixa de pesquisa -->
 			<form id="formulario_pesquisa">
 				<input type="text" name="pesquisa" placeholder="Pesquisar">	
@@ -157,18 +157,18 @@ $_SESSION["login"] = $login;
 				<a href="#">Cadastrar</a>
 			</div>
 			<div class="caixa_entrada">
-				<a href="login.php">Login</a>
+				<a href="/views/public/login.php">Login</a>
 			</div>
 			<!-- Menu de navegação -->
 			<nav id="menu">
 				<ul>
-					<li><a href="home.php">Home</a></li>
-					<li><a href="autores-destaque.php">Autores em destaque</a></li>
-					<li><a href="sobre.php">Sobre</a></li>
-					<li><a href="promocoes.php">Promoções</a></li>
-					<li><a href="nossas-lojas.php">Nossas Lojas</a></li>
-					<li><a href="livro-mes.php">Livro do mês</a></li>
-					<li><a href="fale-conosco.php" class="menu_page">Fale conosco</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="/views/public/autores-destaque.php">Autores em destaque</a></li>
+					<li><a href="/views/public/sobre.php">Sobre</a></li>
+					<li><a href="/views/public/promocoes.php">Promoções</a></li>
+					<li><a href="/views/public/nossas-lojas.php">Nossas Lojas</a></li>
+					<li><a href="/views/public/livro-mes.php">Livro do mês</a></li>
+					<li><a href="/views/public/fale-conosco.php" class="menu_page">Fale conosco</a></li>
 				</ul>
 		  </nav>
 		</div>
@@ -178,13 +178,13 @@ $_SESSION["login"] = $login;
 		<!-- Banner -->
 		<?php 
 
-		include "php/slider.php";
+		include __DIR__ . "/php/slider.php";
 
 		?>
 		<!-- Barra lateral -->
 		<?php 
 
-		include "php/barra_categorias.php";
+		include __DIR__ . "/php/barra_categorias.php";
 
 		?>
 		<!-- Conteúdo principal -->
@@ -265,7 +265,7 @@ $_SESSION["login"] = $login;
 		<div id="rodape">
 			<div id="lado1">
 				<div id="rodape_logo">
-					<a href="home.php">
+					<a href="/">
 						<img src="/public/images/site/woody_woodpecker_logo.png" alt="Icon" title="Livraria Woody Woodpecker">
 						<h2>Woody Woodpecker</h2>
 					</a>

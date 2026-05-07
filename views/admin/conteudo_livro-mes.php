@@ -1,7 +1,7 @@
 <?php 
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 
 // Autenticação do Usuário
@@ -25,7 +25,7 @@ if (empty($_SESSION["login"])) {
 		<script>
 			var certeza_logout = confirm('Tem certeza que deseja sair?');
 			if (certeza_logout == true) {
-				document.location = '../woody_woodpecker_v0/home.php';
+				document.location = '/';
 			} 
 		</script>
 
@@ -36,24 +36,29 @@ if (empty($_SESSION["login"])) {
 	// Inserindo os valores no banco
 
 	$botao = "Salvar";
-	$nome = "";
+	$titulo = null;
+	$status = null;
+
+	$livro_temp = "Escolha um livro";
+	$livro = 0;
 
 	if (isset($_REQUEST['btn_enviar'])) {
-		$nome = $_REQUEST["txt_nome"];
+		$titulo = $_REQUEST["txt_livro"];
+		$status = $_REQUEST["txt_status"];
 
 		// Enviando os arquivos
 		if ($_REQUEST['btn_enviar'] == "Salvar") {
-			$sql = "insert into distribuidora (nome) values ('".$nome."')";
+			$sql = "insert into livro_mes (cod_livro, status) values (".$titulo.", ".$status.")";
 		}
 
 		// Editando os arquivos
 		if ($_REQUEST['btn_enviar'] == "Editar") {
-			$sql = "update distribuidora set nome = '".$nome."' where cod_distribuidora = ".$_SESSION["codigo"]."";
+			$sql = "update livro_mes set cod_livro = ".$titulo.", status = ".$status." where cod_livro_mes = ".$_SESSION["codigo"]."";
 		}
 
 		//echo($sql);
 		mysql_query($sql);
-		header("location:produto_distribuidora.php");
+		header("location: /views/admin/conteudo_livro-mes.php");
 
 	}
 
@@ -63,20 +68,26 @@ if (empty($_SESSION["login"])) {
 
 		if ($modo == "excluir") {
 			$codigo = $_REQUEST['codigo'];
-			$sql = "delete from distribuidora where cod_distribuidora=".$codigo."";
+			$sql = "delete from livro_mes where cod_livro_mes=".$codigo."";
+			//echo($sql);
 			mysql_query($sql);
-			header("location:produto_distribuidora.php");
+			header("location: /views/admin/conteudo_livro-mes.php");
 		}
 
 		if ($modo == "editar") {
 			$_SESSION["codigo"] = $_REQUEST['codigo'];
 			
-			$sql = "select * from distribuidora where cod_distribuidora=".$_SESSION['codigo']."";
+			$sql = "select ad.*, a.titulo from livro_mes as ad inner join livro as a on(ad.cod_livro = a.cod_livro) where cod_livro_mes=".$_SESSION['codigo']."";
 			
 			$query = mysql_query($sql);
 			$rs = mysql_fetch_array($query);
 
-			$nome = $rs["nome"];
+			$titulo = $rs["cod_livro"];
+			$status = $rs["status"];
+
+			$livro = $rs["cod_livro"];
+
+			$livro_temp = $rs["titulo"];
 
 			$botao = "Editar";
 		}
@@ -102,12 +113,12 @@ if (empty($_SESSION["login"])) {
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
-			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
+			<a href="/"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
+			<h1><a href="/views/admin/home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
 					<p>Bem vindo, <?php echo($_SESSION["nome"]) ?></p>
-					<img id="img_perfil" src="<?php echo($_SESSION['imagem']) ?>" alt="<?php echo($_SESSION['imagem']) ?>">
+					<img id="img_perfil" src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>">
 					<input type="submit" name="btn_logout" id="btn_logout" value="Logout">
 				</div>
 			</form>
@@ -116,8 +127,8 @@ if (empty($_SESSION["login"])) {
 	<section id="corpo">
 		<nav id="menu">
 			<ul>
-				<li>					
-					<a href="cms_conteudo.php">
+				<li class="menu-ativo">					
+					<a href="/views/admin/cms_conteudo.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
@@ -125,15 +136,15 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_fale-conosco.php">
+					<a href="/views/admin/cms_fale-conosco.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
 						</div>
 					</a>
 				</li>
-				<li class="menu-ativo">
-					<a href="cms_produto.php">
+				<li>
+					<a href="/views/admin/cms_produto.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
@@ -141,7 +152,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_usuarios.php">
+					<a href="/views/admin/cms_usuarios.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>
@@ -151,20 +162,47 @@ if (empty($_SESSION["login"])) {
 			</ul>
 		</nav>
 		<section id="conteudo">
-			<h2 id="titulo_gerenciamento">Distribuidora</h2>
+			<h2 id="titulo_gerenciamento">Livros do Mês</h2>
 
 			<div id="inserir">
 				<form name="produto_distribuidora_form" method="post">
 					<table id="tbl_cms_usuarios">
 						<thead>
 							<tr>
-								<th colspan="2">Cadastro de Distribuidoras</th>
+								<th colspan="2">Cadastro de Livros do Mês</th>
 							</tr>
 						</thead>
 						<tbody>
+							<tr> 
+								<td>livros</td>
+								<td>
+									<select name="txt_livro" class="estilo_input" required>
+										<option value="<?php echo($livro) ?>"><?php echo($livro_temp) ?></option>
+										<?php
+											// SQL resgatando os livros
+											$sql = "select * from livro order by cod_livro desc";
+											$select = mysql_query($sql);
+
+											while($rs = mysql_fetch_array($select)) {
+
+										?>
+										<option value="<?php echo($rs['cod_livro']) ?>"><?php echo($rs['titulo']) ?></option>
+										<?php
+
+											}
+
+										?>
+									</select>
+								</td>
+							</tr>
 							<tr>
-								<td>Nome:</td>
-								<td><input type="text" name="txt_nome" class="estilo_input" value="<?php echo($nome) ?>" required></td>
+								<td>Status</td>
+								<td>
+									<select name="txt_status">
+										<option value="1">Ativado</option>
+										<option value="0">Desativado</option>
+									</select>
+								</td>
 							</tr>
 							<tr>
 								<td><input type="submit" name="btn_enviar" value="<?php echo($botao) ?>"></td>
@@ -181,17 +219,19 @@ if (empty($_SESSION["login"])) {
 					<thead>
 						<tr>
 							<th>Nome</th>
+							<th>Status</th>
 							<th colspan="2">Opções</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>&nbsp;</td>
+							<td>&nbsp;</td>
 							<td colspan="2">&nbsp;</td>
 						</tr>
 					
 						<?php
-							$sql = "select * from distribuidora order by cod_distribuidora desc";
+							$sql = "select lm.*, l.titulo from livro_mes as lm inner join livro as l on(lm.cod_livro = l.cod_livro) order by cod_livro_mes desc";
 							$select = mysql_query($sql);
 
 							$cont = 0;
@@ -199,16 +239,21 @@ if (empty($_SESSION["login"])) {
 							while($rs = mysql_fetch_array($select)) {
 								$cont++;
 								if ($cont >= 7) $estilo = 1000 + $cont * 5;
-
+								if ($rs['status'] == true) {
+									$status = "Ativado";
+								} else {
+									$status = "Desativado";
+								}
 						?>
 						<tr>
-							<td><?php echo($rs['nome']) ?></td>
+							<td><?php echo($rs['titulo']) ?></td>
+							<td><?php echo($status) ?></td>
 
 							<td class="linha_opcoes">
-								<a class="opcoes_link" href="produto_distribuidora.php?modo=excluir&codigo=<?php echo($rs['cod_distribuidora']) ?>">Excluir</a>					
+								<a class="opcoes_link" href="/views/admin/conteudo_livro-mes.php?modo=excluir&codigo=<?php echo($rs['cod_livro_mes']) ?>">Excluir</a>					
 							</td>
 							<td class="linha_opcoes">
-								<a class="opcoes_link" href="produto_distribuidora.php?modo=editar&codigo=<?php echo($rs['cod_distribuidora']) ?>">Editar</a>
+								<a class="opcoes_link" href="/views/admin/conteudo_livro-mes.php?modo=editar&codigo=<?php echo($rs['cod_livro_mes']) ?>">Editar</a>
 							</td>
 						</tr>
 						<?php

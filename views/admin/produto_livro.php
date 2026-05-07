@@ -1,7 +1,7 @@
 <?php 
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 
 // Autenticação do Usuário
@@ -25,7 +25,7 @@ if (empty($_SESSION["login"])) {
 		<script>
 			var certeza_logout = confirm('Tem certeza que deseja sair?');
 			if (certeza_logout == true) {
-				document.location = '../woody_woodpecker_v0/home.php';
+				document.location = '/';
 			} 
 		</script>
 
@@ -64,7 +64,7 @@ if (empty($_SESSION["login"])) {
 		$editora = $_REQUEST["txt_editora"];
 
 		// Upload do diretório
-		$upload_dir = "Arquivos/";
+		$upload_dir = "/public/images/uploads/";
 
 		// Nome do arquivo
 		$nome_arq = basename($_FILES["arq_foto"]["name"]);
@@ -76,7 +76,7 @@ if (empty($_SESSION["login"])) {
 
 		if ($_REQUEST['btn_enviar'] == "Salvar") {
 			if (strstr($nome_arq, ".png") || strstr($nome_arq, ".jpg")) {
-				if (move_uploaded_file($_FILES["arq_foto"]["tmp_name"], $upload_file)) {
+				if (move_uploaded_file($_FILES["arq_foto"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $upload_file)) {
 					$sql = "insert into livro (titulo, subtitulo, descricao, imagem, cod_autor, cod_genero, cod_distribuidora, cod_editora, preco) values ('".$titulo."', '".$subtitulo."', '".$descricao."', '".$upload_file."', ".$autor.", ".$genero.", ".$distribuidora.", ".$editora.", ".$preco.")";
 				}
 			}
@@ -85,7 +85,7 @@ if (empty($_SESSION["login"])) {
 		// Editando os arquivos
 		if ($_REQUEST['btn_enviar'] == 'Editar') {
 			if (strstr($nome_arq, ".png") || strstr($nome_arq, ".jpg")) {
-				if (move_uploaded_file($_FILES["arq_foto"]["tmp_name"], $upload_file)) {
+				if (move_uploaded_file($_FILES["arq_foto"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $upload_file)) {
 					$sql = "update livro set titulo = '".$titulo."', subtitulo = '".$subtitulo."', descricao = '".$descricao."',imagem = '".$upload_file."', cod_autor = ".$autor.", cod_genero = ".$genero.", cod_distribuidora = ".$distribuidora.", cod_editora = ".$editora.", preco = ".$preco." where cod_livro = ".$_SESSION['codigo']."";
 
 				}
@@ -96,7 +96,7 @@ if (empty($_SESSION["login"])) {
 
 		//echo($sql);
 		mysql_query($sql);
-		header("location:produto_livro.php");
+		header("location: /views/admin/produto_livro.php");
 
 	}
 
@@ -107,7 +107,7 @@ if (empty($_SESSION["login"])) {
 			$codigo = $_REQUEST['codigo'];
 			$sql = "delete from livro where cod_livro=".$codigo."";
 			mysql_query($sql);
-			header("location:produto_livro.php");
+			header("location: /views/admin/produto_livro.php");
 		}
 
 		if ($modo == "editar") {
@@ -166,12 +166,12 @@ if (empty($_SESSION["login"])) {
 <body>
 	<header>
 		<div id="centraliza_cabecalho">
-			<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
-			<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
+			<a href="/"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
+			<h1><a href="/views/admin/home.php">CMS Woody Woodpecker</a></h1>
 			<form method="post">
 				<div id="usuario_logado">
 					<p>Bem vindo, <?php echo($_SESSION["nome"]) ?></p>
-					<img id="img_perfil" src="<?php echo($_SESSION['imagem']) ?>" alt="<?php echo($_SESSION['imagem']) ?>">
+					<img id="img_perfil" src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $_SESSION['imagem']) ?>">
 					<input type="submit" name="btn_logout" id="btn_logout" value="Logout">
 				</div>
 			</form>
@@ -181,7 +181,7 @@ if (empty($_SESSION["login"])) {
 		<nav id="menu">
 			<ul>
 				<li>					
-					<a href="cms_conteudo.php">
+					<a href="/views/admin/cms_conteudo.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/content.png" alt="Administração de Conteúdo">
 							<p>Adm. de Conteúdo</p>
@@ -189,7 +189,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_fale-conosco.php">
+					<a href="/views/admin/cms_fale-conosco.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/headset.png" alt="Administração do Fale Conosco">
 							<p>Adm. do Fale Conosco</p>
@@ -197,7 +197,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li class="menu-ativo">
-					<a href="cms_produto.php">
+					<a href="/views/admin/cms_produto.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/bag.png" alt="Administração dos Produtos">
 							<p>Adm. de Produtos</p>
@@ -205,7 +205,7 @@ if (empty($_SESSION["login"])) {
 					</a>
 				</li>
 				<li>
-					<a href="cms_usuarios.php">
+					<a href="/views/admin/cms_usuarios.php">
 						<div class="cx_menu">
 							<img src="/public/images/admin/user.png" alt="Administração de Usuários">
 							<p>Adm. de Usuários</p>
@@ -243,7 +243,7 @@ if (empty($_SESSION["login"])) {
 							<?php if ($imagem != null) { ?>
 							<tr>
 								<td>Foto atual:</td>
-								<td><img src="<?php echo($imagem); ?>" alt="<?php echo($imagem);?>" style="width:200px;"></td>
+								<td><img src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $imagem) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $imagem) ?>" style="width:200px;"></td>
 							</tr>
 							<?php } ?>
 							<tr>
@@ -394,7 +394,7 @@ if (empty($_SESSION["login"])) {
 							<td><?php echo($rs['titulo']) ?></td>
 							<td><?php echo($rs['subtitulo']) ?></td>
 							<td><?php echo($rs['descricao']) ?></td>
-							<td><img src="<?php echo($rs['imagem']) ?>" alt="<?php echo($rs['imagem']) ?>" style="width: 50px;"></td>
+							<td><img src="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $rs['imagem']) ?>" alt="<?php echo str_replace(['../woody_woodpecker_v1/', 'Arquivos/'], ['', '/public/images/uploads/'], $rs['imagem']) ?>" style="width: 50px;"></td>
 							<td><?php echo($rs['autor']) ?></td>
 							<td><?php echo($rs['genero']) ?></td>
 							<td><?php echo($rs['distribuidora']) ?></td>
@@ -402,10 +402,10 @@ if (empty($_SESSION["login"])) {
 							<td><?php echo($rs['preco']) ?></td>
 
 							<td class="linha_opcoes">
-								<a class="opcoes_link" href="produto_livro.php?modo=excluir&codigo=<?php echo($rs['cod_livro']) ?>">Excluir</a>					
+								<a class="opcoes_link" href="/views/admin/produto_livro.php?modo=excluir&codigo=<?php echo($rs['cod_livro']) ?>">Excluir</a>					
 							</td>
 							<td class="linha_opcoes">
-								<a class="opcoes_link" href="produto_livro.php?modo=editar&codigo=<?php echo($rs['cod_livro']) ?>">Editar</a>
+								<a class="opcoes_link" href="/views/admin/produto_livro.php?modo=editar&codigo=<?php echo($rs['cod_livro']) ?>">Editar</a>
 							</td>
 						</tr>
 						<?php

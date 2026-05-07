@@ -1,7 +1,7 @@
 <?php
 
 /* Conexão com o banco de dados */
-include "../src/database.php";
+include __DIR__ . "/../../src/database.php";
 
 $_SESSION["login"] = "";
 
@@ -27,7 +27,7 @@ $_SESSION["login"] = $login;
 		$_SESSION["nome"] = $rs["nome"];
 		$_SESSION["tipo-usuario"] = $rs["tipo"];
 
-		header("location:../woody_woodpecker_v1/home.php");
+		header("location: /views/admin/home.php");
 	} else {
 		echo("<script>alert('O nome de usuario ou a senha está errada!')</script>");
 	}
@@ -50,8 +50,8 @@ $_SESSION["login"] = $login;
 	<header>
 		<div id="centraliza_cabecalho">
 			<div id="cx_logo_cms">
-				<a href="../woody_woodpecker_v0/home.php"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
-				<h1><a href="home.php">CMS Woody Woodpecker</a></h1>
+				<a href="/"><img src="/public/images/admin/woody_woodpecker_logo.png" alt="Logo"></a>
+				<h1><a href="/views/admin/home.php">CMS Woody Woodpecker</a></h1>
 			</div>
 			<form id="formulario_login" method="post">
 				<label>Usuário:</label>
@@ -65,7 +65,7 @@ $_SESSION["login"] = $login;
 	<section id="corpo">
 		<img src="/public/images/admin/error.png" alt="Error" id="img_erro">
 		<h2>Você está tentando acessar uma página restrita</h2>
-		<p>Faça o login, ou clique <a href="../woody_woodpecker_v0/home.php">aqui</a> para voltar à página inicial</p>
+		<p>Faça o login, ou clique <a href="/">aqui</a> para voltar à página inicial</p>
 	</section>
 	<footer>
 		<div id="centraliza_rodape">

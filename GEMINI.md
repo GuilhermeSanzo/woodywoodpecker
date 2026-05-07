@@ -18,7 +18,7 @@ The application adheres to the standard Laravel structure, promoting a clean sep
 - **Views (`resources/views`):** UI templates using the Blade engine and Tailwind CSS.
 - **Controllers (`app/Http/Controllers`):** Logic for handling requests and orchestrating data. Standard empty CRUD Resource Controllers have been generated for all base and relational entities.
 - **Migrations (`database/migrations`):** Version-controlled database schema definitions.
-- **Routes (`routes/web.php`, `routes/auth.php`):** Centralized route management, including Breeze authentication routes.
+- **Routes (`routes/web.php`, `routes/auth.php`):** Centralized route management. Resource routes have been registered for all core entities, mapping them to their respective controllers while preserving Breeze authentication routes.
 
 ## Building and Running
 
@@ -74,6 +74,6 @@ The following tables and models have been established as part of the initial mig
     - `book_promotion`: Pivot table linking `books` and `promotions`.
 
 ## Next Steps
-1.  **Application Routes:** Define comprehensive routes in `routes/web.php` and map them to the generated Resource Controllers.
-2.  **Data Seeding:** Populate the new schema using the legacy SQL reference data.
-3.  **Frontend Refinement:** Enhance Blade templates with Tailwind CSS for a premium user experience.
+1.  **Data Seeding:** Populate the new schema using the legacy SQL reference data by developing comprehensive Seeders.
+2.  **Frontend Refinement:** Enhance Blade templates with Tailwind CSS for a premium user experience.
+3.  **Controller Implementation:** Implement the logic for the generated Resource Controllers to handle storefront and administrative tasks.

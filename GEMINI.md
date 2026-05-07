@@ -8,16 +8,17 @@ A modern reimagining of the Woody Woodpecker Bookstore application, currently be
 - **Framework:** Laravel (Modern MVC)
 - **Language:** PHP 8.2+
 - **Database:** SQLite (Development) / MySQL (Production)
-- **Frontend:** Blade Templates, Vite, Tailwind CSS
+- **Frontend:** Blade Templates, Vite, Tailwind CSS, Axios
+- **Authentication:** Laravel Breeze (Blade Stack)
 - **Package Management:** Composer, NPM
 
 ## Architecture
 The application adheres to the standard Laravel structure, promoting a clean separation of concerns:
 - **Models (`app/Models`):** Data structure and Eloquent relationships.
-- **Views (`resources/views`):** UI templates using the Blade engine.
+- **Views (`resources/views`):** UI templates using the Blade engine and Tailwind CSS.
 - **Controllers (`app/Http/Controllers`):** Logic for handling requests and orchestrating data.
 - **Migrations (`database/migrations`):** Version-controlled database schema definitions.
-- **Routes (`routes/web.php`):** Centralized route management.
+- **Routes (`routes/web.php`, `routes/auth.php`):** Centralized route management, including Breeze authentication routes.
 
 ## Building and Running
 
@@ -47,6 +48,7 @@ The application adheres to the standard Laravel structure, promoting a clean sep
     Access the application at `http://localhost:8000`.
 
 ## Development Conventions
+- **Authentication:** Scaffolding (Login, Register, Dashboard) is provided by Laravel Breeze.
 - **Database:** Always use Eloquent ORM and Migrations. Do not execute raw SQL unless absolutely necessary.
 - **Validation:** Utilize Form Requests or the `validate` method to ensure data integrity.
 - **Consistency:** Follow PSR-12 coding standards.
@@ -71,6 +73,6 @@ The following tables and models have been established as part of the initial mig
     - `book_promotion`: Pivot table linking `books` and `promotions`.
 
 ## Next Steps
-1.  **Authentication:** Implement Laravel Breeze or Jetstream for secure user login and registration.
-2.  **Controllers:** Develop RESTful controllers to handle business logic for public storefront and administrative tasks.
-3.  **Data Seeding:** Populate the new schema using the legacy SQL reference data.
+1.  **Controllers:** Develop RESTful controllers to handle business logic for public storefront and administrative tasks.
+2.  **Data Seeding:** Populate the new schema using the legacy SQL reference data.
+3.  **Frontend Refinement:** Enhance Blade templates with Tailwind CSS for a premium user experience.

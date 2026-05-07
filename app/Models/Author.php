@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Author extends Model
 {
@@ -34,5 +35,21 @@ class Author extends Model
             'birth_date' => 'date',
             'death_date' => 'date',
         ];
+    }
+
+    /**
+     * Get the books for the author.
+     */
+    public function books(): HasMany
+    {
+        return $this->hasMany(Book::class);
+    }
+
+    /**
+     * Get the featured author entries for the author.
+     */
+    public function featuredAuthorEntries(): HasMany
+    {
+        return $this->hasMany(FeaturedAuthor::class);
     }
 }

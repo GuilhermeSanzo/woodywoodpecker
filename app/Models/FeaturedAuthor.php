@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Promotion extends Model
+class FeaturedAuthor extends Model
 {
     use HasFactory;
 
@@ -16,10 +16,8 @@ class Promotion extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'author_id',
         'is_active',
-        'start_date',
-        'end_date',
     ];
 
     /**
@@ -31,16 +29,14 @@ class Promotion extends Model
     {
         return [
             'is_active' => 'boolean',
-            'start_date' => 'date',
-            'end_date' => 'date',
         ];
     }
 
     /**
-     * The books that belong to the promotion.
+     * Get the author that is featured.
      */
-    public function books(): BelongsToMany
+    public function author(): BelongsTo
     {
-        return $this->belongsToMany(Book::class);
+        return $this->belongsTo(Author::class);
     }
 }

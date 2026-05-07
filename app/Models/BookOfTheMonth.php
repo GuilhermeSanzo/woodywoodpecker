@@ -4,11 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Promotion extends Model
+class BookOfTheMonth extends Model
 {
     use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'books_of_the_month';
 
     /**
      * The attributes that are mass assignable.
@@ -16,10 +23,8 @@ class Promotion extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'book_id',
         'is_active',
-        'start_date',
-        'end_date',
     ];
 
     /**
@@ -31,16 +36,14 @@ class Promotion extends Model
     {
         return [
             'is_active' => 'boolean',
-            'start_date' => 'date',
-            'end_date' => 'date',
         ];
     }
 
     /**
-     * The books that belong to the promotion.
+     * Get the book associated with the book of the month.
      */
-    public function books(): BelongsToMany
+    public function book(): BelongsTo
     {
-        return $this->belongsToMany(Book::class);
+        return $this->belongsTo(Book::class);
     }
 }

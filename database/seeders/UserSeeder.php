@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 'name' => $user[4],
                 'password' => Hash::make($user[3]),
                 'user_type_id' => $user[5],
-                'image' => $user[6],
+                'image' => str_replace('Arquivos/', 'uploads/', $user[6]),
             ]);
         }
     }

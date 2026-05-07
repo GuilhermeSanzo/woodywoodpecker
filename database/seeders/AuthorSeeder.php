@@ -106,6 +106,7 @@ class AuthorSeeder extends Seeder
         ];
 
         foreach ($authors as $author) {
+            $author['image'] = str_replace('Arquivos/', 'uploads/', $author['image']);
             Author::create($author);
         }
     }

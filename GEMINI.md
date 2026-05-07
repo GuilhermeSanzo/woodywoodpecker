@@ -74,6 +74,10 @@ The following tables and models have been established as part of the initial mig
     - `book_promotion`: Pivot table linking `books` and `promotions`.
 
 ## Next Steps
-1.  **Frontend Refinement:** Enhance Blade templates with Tailwind CSS for a premium user experience, focusing on the storefront (Welcome page, Books listing, Author profiles).
-2.  **Controller Implementation:** Implement the logic for the generated Resource Controllers to handle storefront and administrative tasks.
+1.  **Frontend Refinement:**
+    - [x] **Books Listing:** Implement responsive grid with eager loading, guest navigation support, and legacy image mapping.
+    - [ ] **Book Details:** Create a comprehensive detailed view for individual books, showcasing metadata, descriptions, and related content.
+    - [ ] **Author Profiles:** Develop dedicated pages for authors, listing biographies and associated titles.
+    - [ ] **Welcome Page:** Modernize the landing page with featured authors and books of the month.
+2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.
 3.  **Admin Panel:** Develop the administrative interface for managing books, authors, and users.

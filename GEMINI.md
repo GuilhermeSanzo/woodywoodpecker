@@ -17,7 +17,7 @@ The application adheres to the standard Laravel structure, promoting a clean sep
 - **Models (`app/Models`):** Data structure and Eloquent relationships.
 - **Views (`resources/views`):** UI templates using the Blade engine and Tailwind CSS.
 - **Controllers (`app/Http/Controllers`):** Logic for handling requests and orchestrating data. Standard empty CRUD Resource Controllers have been generated for all base and relational entities.
-- **Migrations (`database/migrations`):** Version-controlled database schema definitions.
+- **Migrations (`database/migrations`):** Version-controlled database schema definitions. The database has been fully seeded with legacy data from the `reference/legacy_database.sql` source.
 - **Routes (`routes/web.php`, `routes/auth.php`):** Centralized route management. Resource routes have been registered for all core entities, mapping them to their respective controllers while preserving Breeze authentication routes.
 
 ## Building and Running
@@ -74,6 +74,6 @@ The following tables and models have been established as part of the initial mig
     - `book_promotion`: Pivot table linking `books` and `promotions`.
 
 ## Next Steps
-1.  **Relational Data Seeding:** Develop seeders for relational entities (`users`, `books`, `featured_authors`, `books_of_the_month`, `book_promotion`) by extracting and mapping the remaining legacy data.
-2.  **Frontend Refinement:** Enhance Blade templates with Tailwind CSS for a premium user experience.
-3.  **Controller Implementation:** Implement the logic for the generated Resource Controllers to handle storefront and administrative tasks.
+1.  **Frontend Refinement:** Enhance Blade templates with Tailwind CSS for a premium user experience, focusing on the storefront (Welcome page, Books listing, Author profiles).
+2.  **Controller Implementation:** Implement the logic for the generated Resource Controllers to handle storefront and administrative tasks.
+3.  **Admin Panel:** Develop the administrative interface for managing books, authors, and users.

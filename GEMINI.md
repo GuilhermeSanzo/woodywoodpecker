@@ -16,7 +16,7 @@ A modern reimagining of the Woody Woodpecker Bookstore application, currently be
 The application adheres to the standard Laravel structure, promoting a clean separation of concerns:
 - **Models (`app/Models`):** Data structure and Eloquent relationships.
 - **Views (`resources/views`):** UI templates using the Blade engine and Tailwind CSS.
-- **Controllers (`app/Http/Controllers`):** Logic for handling requests and orchestrating data.
+- **Controllers (`app/Http/Controllers`):** Logic for handling requests and orchestrating data. Standard empty CRUD Resource Controllers have been generated for all base and relational entities.
 - **Migrations (`database/migrations`):** Version-controlled database schema definitions.
 - **Routes (`routes/web.php`, `routes/auth.php`):** Centralized route management, including Breeze authentication routes.
 
@@ -50,6 +50,7 @@ The application adheres to the standard Laravel structure, promoting a clean sep
 ## Development Conventions
 - **Authentication:** Scaffolding (Login, Register, Dashboard) is provided by Laravel Breeze.
 - **Database:** Always use Eloquent ORM and Migrations. Do not execute raw SQL unless absolutely necessary.
+- **Controllers:** Utilize Resource Controllers for consistent CRUD operations across all entities.
 - **Validation:** Utilize Form Requests or the `validate` method to ensure data integrity.
 - **Consistency:** Follow PSR-12 coding standards.
 - **Security:** Leverage Laravel's built-in CSRF protection, password hashing, and SQL injection prevention.
@@ -73,6 +74,6 @@ The following tables and models have been established as part of the initial mig
     - `book_promotion`: Pivot table linking `books` and `promotions`.
 
 ## Next Steps
-1.  **Controllers:** Develop RESTful controllers to handle business logic for public storefront and administrative tasks.
+1.  **Application Routes:** Define comprehensive routes in `routes/web.php` and map them to the generated Resource Controllers.
 2.  **Data Seeding:** Populate the new schema using the legacy SQL reference data.
 3.  **Frontend Refinement:** Enhance Blade templates with Tailwind CSS for a premium user experience.

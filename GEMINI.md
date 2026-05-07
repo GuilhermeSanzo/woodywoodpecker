@@ -74,6 +74,6 @@ The following tables and models have been established as part of the initial mig
     - `book_promotion`: Pivot table linking `books` and `promotions`.
 
 ## Next Steps
-1.  **Data Seeding:** Populate the new schema using the legacy SQL reference data by developing comprehensive Seeders.
+1.  **Relational Data Seeding:** Develop seeders for relational entities (`users`, `books`, `featured_authors`, `books_of_the_month`, `book_promotion`) by extracting and mapping the remaining legacy data.
 2.  **Frontend Refinement:** Enhance Blade templates with Tailwind CSS for a premium user experience.
 3.  **Controller Implementation:** Implement the logic for the generated Resource Controllers to handle storefront and administrative tasks.

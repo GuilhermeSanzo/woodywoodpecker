@@ -22,6 +22,11 @@ class DatabaseSeeder extends Seeder
             DistributorSeeder::class,
             StoreSeeder::class,
             PromotionSeeder::class,
+            BookSeeder::class,
+            UserSeeder::class,
+            FeaturedAuthorSeeder::class,
+            BookOfTheMonthSeeder::class,
+            BookPromotionSeeder::class,
         ]);
     }
 }

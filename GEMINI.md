@@ -77,7 +77,7 @@ The following tables and models have been established as part of the initial mig
 1.  **Frontend Refinement:**
     - [x] **Books Listing:** Implement responsive grid with eager loading, guest navigation support, and legacy image mapping.
     - [x] **Book Details:** Create a comprehensive detailed view for individual books, showcasing metadata, descriptions, and related content.
-    - [ ] **Author Profiles:** Develop dedicated pages for authors, listing biographies and associated titles.
+    - [x] **Author Profiles:** Develop dedicated pages for authors, listing biographies and associated titles.
     - [ ] **Welcome Page:** Modernize the landing page with featured authors and books of the month.
 2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.
 3.  **Admin Panel:** Develop the administrative interface for managing books, authors, and users.

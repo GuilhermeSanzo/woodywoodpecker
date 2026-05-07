@@ -76,7 +76,7 @@ The following tables and models have been established as part of the initial mig
 ## Next Steps
 1.  **Frontend Refinement:**
     - [x] **Books Listing:** Implement responsive grid with eager loading, guest navigation support, and legacy image mapping.
-    - [ ] **Book Details:** Create a comprehensive detailed view for individual books, showcasing metadata, descriptions, and related content.
+    - [x] **Book Details:** Create a comprehensive detailed view for individual books, showcasing metadata, descriptions, and related content.
     - [ ] **Author Profiles:** Develop dedicated pages for authors, listing biographies and associated titles.
     - [ ] **Welcome Page:** Modernize the landing page with featured authors and books of the month.
 2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.

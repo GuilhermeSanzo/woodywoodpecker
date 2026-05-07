@@ -58,3 +58,19 @@ The application adheres to the standard Laravel structure, promoting a clean sep
 - `/resources/views`: Frontend Blade components.
 - `/database`: Migrations, factories, and seeders.
 - `/public`: Entry point and compiled assets.
+
+## Current Database Schema
+The following tables and models have been established as part of the initial migration phase:
+
+- **Base Entities:** `authors`, `distributors`, `publishers`, `genres`, `promotions`, `user_types`, `stores`, `newsletters`, `abouts`, `contacts`.
+- **Relational Entities:**
+    - `users`: Links to `user_types`.
+    - `books`: Central entity linking to `authors`, `genres`, `distributors`, and `publishers`.
+    - `featured_authors`: Highlighting specific `authors`.
+    - `books_of_the_month`: Showcasing specific `books`.
+    - `book_promotion`: Pivot table linking `books` and `promotions`.
+
+## Next Steps
+1.  **Authentication:** Implement Laravel Breeze or Jetstream for secure user login and registration.
+2.  **Controllers:** Develop RESTful controllers to handle business logic for public storefront and administrative tasks.
+3.  **Data Seeding:** Populate the new schema using the legacy SQL reference data.

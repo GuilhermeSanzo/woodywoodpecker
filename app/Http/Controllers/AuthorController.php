@@ -10,9 +10,15 @@ class AuthorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $authors = Author::paginate(10);
+
+        if ($request->is('admin/*')) {
+            return view('admin.authors.index', compact('authors'));
+        }
+
+        return view('authors.index', compact('authors'));
     }
 
     /**
@@ -20,7 +26,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.authors.form');
     }
 
     /**
@@ -28,7 +34,25 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'pseudonym' => 'nullable|string|max:45',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'birth_date' => 'required|date',
+            'death_date' => 'nullable|date|after_or_equal:birth_date',
+            'description' => 'required|string',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads'), $imageName);
+            $validated['image'] = 'uploads/' . $imageName;
+        }
+
+        Author::create($validated);
+
+        return redirect()->route('admin.authors.index')
+            ->with('success', 'Author created successfully.');
     }
 
     /**
@@ -44,24 +68,47 @@ class AuthorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Author $author)
     {
-        //
+        return view('admin.authors.form', compact('author'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Author $author)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'pseudonym' => 'nullable|string|max:45',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'birth_date' => 'required|date',
+            'death_date' => 'nullable|date|after_or_equal:birth_date',
+            'description' => 'required|string',
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Delete old image if it exists and it's not a legacy image (optional, but good practice)
+            // For now, just upload the new one
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads'), $imageName);
+            $validated['image'] = $imageName;
+        }
+
+        $author->update($validated);
+
+        return redirect()->route('admin.authors.index')
+            ->with('success', 'Author updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Author $author)
     {
-        //
+        $author->delete();
+
+        return redirect()->route('admin.authors.index')
+            ->with('success', 'Author deleted successfully.');
     }
 }

@@ -7,7 +7,7 @@ A modern reimagining of the Woody Woodpecker Bookstore application, currently be
 ## Main Technologies
 - **Framework:** Laravel (Modern MVC)
 - **Language:** PHP 8.2+
-- **Database:** SQLite (Development) / MySQL (Production)
+- **Database:** SQLite (Default for Portability) / MySQL (Optional Production)
 - **Frontend:** Blade Templates, Vite, Tailwind CSS, Axios
 - **Authentication:** Laravel Breeze (Blade Stack)
 - **Package Management:** Composer, NPM
@@ -17,7 +17,7 @@ The application adheres to the standard Laravel structure, promoting a clean sep
 - **Models (`app/Models`):** Data structure and Eloquent relationships.
 - **Views (`resources/views`):** UI templates using the Blade engine and Tailwind CSS.
 - **Controllers (`app/Http/Controllers`):** Logic for handling requests and orchestrating data. Standard empty CRUD Resource Controllers have been generated for all base and relational entities.
-- **Migrations (`database/migrations`):** Version-controlled database schema definitions. The database has been fully seeded with legacy data from the `reference/legacy_database.sql` source.
+- **Migrations (`database/migrations`):** Version-controlled database schema definitions. The database has been fully seeded with legacy data from the `reference/legacy_database.sql` source using a custom SQLite-compatible seeder.
 - **Routes (`routes/web.php`, `routes/auth.php`):** Centralized route management. Resource routes have been registered for all core entities, mapping them to their respective controllers while preserving Breeze authentication routes.
 
 ## Building and Running
@@ -35,7 +35,7 @@ The application adheres to the standard Laravel structure, promoting a clean sep
     ```
 2.  **Configuration:**
     - Copy `.env.example` to `.env`.
-    - Configure your database in the `.env` file (SQLite is used by default).
+    - The project is pre-configured to use **SQLite**, ensuring maximum portability and zero-config database setup.
 3.  **Application Initialization:**
     ```bash
     php artisan key:generate
@@ -49,7 +49,7 @@ The application adheres to the standard Laravel structure, promoting a clean sep
 
 ## Development Conventions
 - **Authentication:** Scaffolding (Login, Register, Dashboard) is provided by Laravel Breeze.
-- **Database:** Always use Eloquent ORM and Migrations. Do not execute raw SQL unless absolutely necessary.
+- **Database:** Always use Eloquent ORM and Migrations. Do not execute raw SQL unless absolutely necessary. SQLite is the primary development database.
 - **Controllers:** Utilize Resource Controllers for consistent CRUD operations across all entities.
 - **Validation:** Utilize Form Requests or the `validate` method to ensure data integrity.
 - **Consistency:** Follow PSR-12 coding standards.
@@ -79,6 +79,7 @@ The following tables and models have been established as part of the initial mig
     - [x] **Book Details:** Create a comprehensive detailed view for individual books, showcasing metadata, descriptions, and related content.
     - [x] **Author Profiles:** Develop dedicated pages for authors, listing biographies and associated titles.
     - [x] **Welcome Page:** Modernize the landing page with featured authors and books of the month.
+    - [x] **Admin Dashboard:** Transform the default dashboard into a functional management hub.
 2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.
 3.  **Admin Panel:**
     - [x] **Authors CRUD:** Implement administrative interface for managing authors, including image uploads and secure routing.

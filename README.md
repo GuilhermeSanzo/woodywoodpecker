@@ -1,58 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Woody Woodpecker Bookstore
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, full-featured bookstore application migrated from legacy procedural PHP to the **Laravel** framework. This project demonstrates a robust MVC architecture, secure administrative controls, and a polished frontend using Tailwind CSS.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Dynamic Catalog:** Browse a rich collection of books with detailed metadata, covers, and price information.
+- **Author Profiles:** Dedicated pages for authors showcasing their biographies and published titles.
+- **Admin Hub:** A comprehensive management dashboard for administrators to handle:
+    - **Books:** Full CRUD with image uploads and relational data.
+    - **Authors:** Manage biographical information and profile images.
+    - **User Management:** Secure account controls with role-based access.
+    - **Support Entities:** Centralized management of Genres, Publishers, and Stores.
+- **Modern Authentication:** Powered by Laravel Breeze for secure login, registration, and profile management.
+- **Responsive Design:** Clean and professional UI built with Blade and Tailwind CSS.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Technology Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Framework:** [Laravel 11](https://laravel.com)
+- **Database:** [SQLite](https://www.sqlite.org) (Default for portability)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com)
+- **Asset Management:** [Vite](https://vitejs.dev)
+- **Auth Scaffolding:** [Laravel Breeze](https://laravel.com/docs/starter-kits#laravel-breeze)
 
-## Learning Laravel
+## 📦 Installation & Setup
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
+- PHP 8.2+
+- Composer
+- Node.js & NPM
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Steps
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd woody-woodpecker
+   ```
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+2. **Install dependencies:**
+   ```bash
+   composer install
+   npm install
+   ```
 
-## Agentic Development
+3. **Environment Setup:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+4. **Database Initialization:**
+   The project uses SQLite by default. Ensure an empty `database/database.sqlite` file exists (or Laravel will prompt to create it).
+   ```bash
+   php artisan migrate --seed
+   ```
 
-```bash
-composer require laravel/boost --dev
+5. **Build Assets:**
+   ```bash
+   npm run build
+   ```
 
-php artisan boost:install
-```
+6. **Start the Server:**
+   ```bash
+   php artisan serve
+   ```
+   Visit `http://localhost:8000` in your browser.
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## 📂 Architecture Highlights
 
-## Contributing
+- **Models:** Eloquent ORM with defined relationships (BelongsTo, HasMany, BelongsToMany).
+- **Controllers:** RESTful Resource Controllers with distinct public and administrative logic.
+- **Migrations & Seeders:** Fully automated database schema and legacy data migration.
+- **Security:** Built-in protection against CSRF, XSS, and SQL injection.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📝 License
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](LICENSE).

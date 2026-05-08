@@ -28,20 +28,26 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Public Routes
 Route::resource('authors', AuthorController::class)->only(['index', 'show']);
 Route::resource('books', BookController::class)->only(['index', 'show']);
+Route::resource('genres', GenreController::class)->only(['index', 'show']);
+Route::resource('publishers', PublisherController::class)->only(['index', 'show']);
+Route::resource('stores', StoreController::class)->only(['index', 'show']);
 
+// Admin Routes
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('authors', AuthorController::class)->except(['show']);
     Route::resource('books', BookController::class)->except(['show']);
+    Route::resource('genres', GenreController::class)->except(['show']);
+    Route::resource('publishers', PublisherController::class)->except(['show']);
+    Route::resource('stores', StoreController::class)->except(['show']);
 });
 
-Route::resource('publishers', PublisherController::class);
-Route::resource('genres', GenreController::class);
+// Other Resources (Pending Admin Implementation)
 Route::resource('distributors', DistributorController::class);
 Route::resource('promotions', PromotionController::class);
 Route::resource('user-types', UserTypeController::class);
-Route::resource('stores', StoreController::class);
 Route::resource('newsletters', NewsletterController::class);
 Route::resource('abouts', AboutController::class);
 Route::resource('contacts', ContactController::class);

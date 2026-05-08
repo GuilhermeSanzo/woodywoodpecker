@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 
 class PublisherController extends Controller
@@ -9,9 +10,15 @@ class PublisherController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $publishers = Publisher::orderBy('name')->paginate(10);
+
+        if ($request->is('admin/*')) {
+            return view('admin.publishers.index', compact('publishers'));
+        }
+
+        return view('publishers.index', compact('publishers'));
     }
 
     /**
@@ -19,7 +26,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.publishers.form');
     }
 
     /**
@@ -27,38 +34,61 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100|unique:publishers,name',
+        ]);
+
+        Publisher::create($validated);
+
+        return redirect()->route('admin.publishers.index')
+            ->with('success', 'Publisher created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Publisher $publisher)
     {
-        //
+        $publisher->load('books');
+        return view('publishers.show', compact('publisher'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Publisher $publisher)
     {
-        //
+        return view('admin.publishers.form', compact('publisher'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Publisher $publisher)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100|unique:publishers,name,' . $publisher->id,
+        ]);
+
+        $publisher->update($validated);
+
+        return redirect()->route('admin.publishers.index')
+            ->with('success', 'Publisher updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Publisher $publisher)
     {
-        //
+        if ($publisher->books()->count() > 0) {
+            return redirect()->route('admin.publishers.index')
+                ->with('error', 'Cannot delete publisher as it is associated with books.');
+        }
+
+        $publisher->delete();
+
+        return redirect()->route('admin.publishers.index')
+            ->with('success', 'Publisher deleted successfully.');
     }
 }

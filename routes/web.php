@@ -29,9 +29,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('authors', AuthorController::class)->only(['index', 'show']);
+Route::resource('books', BookController::class)->only(['index', 'show']);
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('authors', AuthorController::class)->except(['show']);
+    Route::resource('books', BookController::class)->except(['show']);
 });
 
 Route::resource('publishers', PublisherController::class);
@@ -43,7 +45,6 @@ Route::resource('stores', StoreController::class);
 Route::resource('newsletters', NewsletterController::class);
 Route::resource('abouts', AboutController::class);
 Route::resource('contacts', ContactController::class);
-Route::resource('books', BookController::class);
 Route::resource('users', UserController::class);
 
 require __DIR__.'/auth.php';

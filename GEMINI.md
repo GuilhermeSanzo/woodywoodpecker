@@ -84,4 +84,4 @@ The following tables and models have been established as part of the initial mig
     - [x] **Authors CRUD:** Implement administrative interface for managing authors, including image uploads and secure routing.
     - [x] **Books CRUD:** Implement administrative interface for managing books, including relational dropdowns, image uploads, and secure routing.
     - [x] **Genres, Publishers, and Stores CRUD:** Implement administrative interface for managing base support entities.
-    - [ ] **User Management:** Implement admin controls for users and permissions.
+    - [x] **User Management:** Implement admin controls for users and permissions.

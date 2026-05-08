@@ -28,7 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('authors', AuthorController::class);
+Route::resource('authors', AuthorController::class)->only(['index', 'show']);
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('authors', AuthorController::class)->except(['show']);
+});
+
 Route::resource('publishers', PublisherController::class);
 Route::resource('genres', GenreController::class);
 Route::resource('distributors', DistributorController::class);

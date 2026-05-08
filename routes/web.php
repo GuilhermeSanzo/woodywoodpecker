@@ -42,6 +42,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('genres', GenreController::class)->except(['show']);
     Route::resource('publishers', PublisherController::class)->except(['show']);
     Route::resource('stores', StoreController::class)->except(['show']);
+    Route::resource('users', UserController::class);
 });
 
 // Other Resources (Pending Admin Implementation)
@@ -51,6 +52,5 @@ Route::resource('user-types', UserTypeController::class);
 Route::resource('newsletters', NewsletterController::class);
 Route::resource('abouts', AboutController::class);
 Route::resource('contacts', ContactController::class);
-Route::resource('users', UserController::class);
 
 require __DIR__.'/auth.php';

@@ -82,5 +82,5 @@ The following tables and models have been established as part of the initial mig
 2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.
 3.  **Admin Panel:**
     - [x] **Authors CRUD:** Implement administrative interface for managing authors, including image uploads and secure routing.
-    - [ ] **Books CRUD:** Develop management interface for books.
+    - [x] **Books CRUD:** Implement administrative interface for managing books, including relational dropdowns, image uploads, and secure routing.
     - [ ] **User Management:** Implement admin controls for users and permissions.

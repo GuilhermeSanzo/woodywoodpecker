@@ -20,7 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,21 +36,21 @@ Route::resource('publishers', PublisherController::class)->only(['index', 'show'
 Route::resource('stores', StoreController::class)->only(['index', 'show']);
 
 // Admin Routes
-Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('authors', AuthorController::class)->except(['show']);
     Route::resource('books', BookController::class)->except(['show']);
     Route::resource('genres', GenreController::class)->except(['show']);
     Route::resource('publishers', PublisherController::class)->except(['show']);
     Route::resource('stores', StoreController::class)->except(['show']);
     Route::resource('users', UserController::class);
-});
 
-// Other Resources (Pending Admin Implementation)
-Route::resource('distributors', DistributorController::class);
-Route::resource('promotions', PromotionController::class);
-Route::resource('user-types', UserTypeController::class);
-Route::resource('newsletters', NewsletterController::class);
-Route::resource('abouts', AboutController::class);
-Route::resource('contacts', ContactController::class);
+    // Other Resources
+    Route::resource('distributors', DistributorController::class);
+    Route::resource('promotions', PromotionController::class);
+    Route::resource('user-types', UserTypeController::class);
+    Route::resource('newsletters', NewsletterController::class);
+    Route::resource('abouts', AboutController::class);
+    Route::resource('contacts', ContactController::class);
+});
 
 require __DIR__.'/auth.php';

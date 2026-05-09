@@ -16,10 +16,11 @@ class UserTypeSeeder extends Seeder
             ['id' => 1, 'name' => 'Administrador'],
             ['id' => 2, 'name' => 'Operador'],
             ['id' => 3, 'name' => 'Cataloguista'],
+            ['id' => 4, 'name' => 'Cliente'],
         ];
 
         foreach ($types as $type) {
-            UserType::create($type);
+            UserType::updateOrCreate(['id' => $type['id']], $type);
         }
     }
 }

@@ -80,6 +80,7 @@ The following tables and models have been established as part of the initial mig
     - [x] **Author Profiles:** Develop dedicated pages for authors, listing biographies and associated titles.
     - [x] **Welcome Page:** Modernize the landing page with featured authors and books of the month.
     - [x] **Admin Dashboard:** Transform the default dashboard into a functional management hub.
+    - [x] Integrate global logo in Navbar and Favicon
 2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.
 3.  **Admin Panel:**
     - [x] **Authors CRUD:** Implement administrative interface for managing authors, including image uploads and secure routing.

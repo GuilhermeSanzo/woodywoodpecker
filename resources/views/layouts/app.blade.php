@@ -19,7 +19,7 @@
         <link rel="icon" href="{{ asset('uploads/woody_woodpecker_logo.png') }}" type="image/png" sizes="any">
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 flex flex-col">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -32,9 +32,19 @@
             @endisset
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-grow">
                 {{ $slot }}
             </main>
+
+            <footer class="bg-gray-800 text-white mt-20 py-12 text-center">
+                <div class="max-w-7xl mx-auto px-4">
+                    <p class="text-gray-400 mb-2">&copy; {{ date('Y') }} Woody Woodpecker. All rights reserved.</p>
+                    <p class="text-zinc-500 text-sm">
+                        Developed by Guilherme Souza.
+                        <a href="https://guilhermesanzo.me" class="hover:text-zinc-300 transition-colors ml-1">Return to Hub</a>
+                    </p>
+                </div>
+            </footer>
         </div>
     </body>
 </html>

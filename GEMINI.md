@@ -83,7 +83,9 @@ The following tables and models have been established as part of the initial mig
     - [x] Integrate global logo in Navbar and Favicon
     - [x] **Global Dark Footer:** Implement a global dark footer in the main layout with developer attribution.
 2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.
-3.  **Admin Panel:**
+3.  **Documentation & Portfolio:**
+    - [x] **Create multi-language professional README:** Develop a high-tier presentation in English, Portuguese, and Spanish.
+4.  **Admin Panel:**
     - [x] **Authors CRUD:** Implement administrative interface for managing authors, including image uploads and secure routing.
     - [x] **Books CRUD:** Implement administrative interface for managing books, including relational dropdowns, image uploads, and secure routing.
     - [x] **Genres, Publishers, and Stores CRUD:** Implement administrative interface for managing base support entities.

@@ -1,77 +1,82 @@
-# Woody Woodpecker Bookstore
+🌍 [English](#english) | 🇧🇷 [Português](#português) | 🇪🇸 [Español](#español)
 
-A modern, full-featured bookstore application migrated from legacy procedural PHP to the **Laravel** framework. This project demonstrates a robust MVC architecture, secure administrative controls, and a polished frontend using Tailwind CSS.
+---
 
-## 🚀 Features
+# <a name="english"></a> 📚 Woody Woodpecker Bookstore
 
-- **Dynamic Catalog:** Browse a rich collection of books with detailed metadata, covers, and price information.
-- **Author Profiles:** Dedicated pages for authors showcasing their biographies and published titles.
-- **Admin Hub:** A comprehensive management dashboard for administrators to handle:
-    - **Books:** Full CRUD with image uploads and relational data.
-    - **Authors:** Manage biographical information and profile images.
-    - **User Management:** Secure account controls with role-based access.
-    - **Support Entities:** Centralized management of Genres, Publishers, and Stores.
-- **Modern Authentication:** Powered by Laravel Breeze for secure login, registration, and profile management.
-- **Responsive Design:** Clean and professional UI built with Blade and Tailwind CSS.
+### 🚀 Overview
+A high-performance modernization of the legacy Woody Woodpecker Bookstore. This project transforms a procedural PHP codebase into a robust, scalable, and secure **Laravel** application. It serves as a comprehensive administrative and customer platform for managing a diverse literary catalog with focus on architectural integrity and UI/UX excellence.
 
-## 🛠️ Technology Stack
+### 🛠️ Architecture & Tech Stack
+- **Framework:** Laravel 11.x (PHP 8.3+)
+- **Database:** SQLite (Portable & Zero-config)
+- **Frontend:** Blade Templates, Tailwind CSS v4, Vite
+- **Server:** Nginx, DigitalOcean VPS Deployment
+- **Authentication:** Laravel Breeze (Secure Auth & Role Management)
 
-- **Framework:** [Laravel 11](https://laravel.com)
-- **Database:** [SQLite](https://www.sqlite.org) (Default for portability)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com)
-- **Asset Management:** [Vite](https://vitejs.dev)
-- **Auth Scaffolding:** [Laravel Breeze](https://laravel.com/docs/starter-kits#laravel-breeze)
+### ✨ Key Features
+- **Intelligent Catalog:** Responsive book grid with eager loading and legacy image mapping.
+- **Dynamic Profiles:** Comprehensive Author and Publisher management with relational deep-linking.
+- **Admin Hub:** Full-featured Dashboard with secure CRUD operations for Books, Authors, Genres, and Stores.
+- **Relational Integrity:** Advanced Eloquent relationships connecting Books to Authors, Distributors, and Promotions.
+- **Responsive UI:** Modernized dark-mode aesthetic optimized for all devices.
 
-## 📦 Installation & Setup
+### 🏗️ Engineering Standards
+- **Design Pattern:** Modern MVC (Model-View-Controller) architecture.
+- **Clean Code:** Adherence to PSR-12 and SOLID principles for maintainable logic.
+- **Git Flow:** Strict use of Conventional Commits for transparent version control.
+- **Security:** Built-in CSRF protection, SQL injection prevention, and password hashing.
 
-### Prerequisites
-- PHP 8.2+
-- Composer
-- Node.js & NPM
+---
 
-### Steps
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd woody-woodpecker
-   ```
+# <a name="português"></a> 📚 Livraria Woody Woodpecker
 
-2. **Install dependencies:**
-   ```bash
-   composer install
-   npm install
-   ```
+### 🚀 Visão Geral
+Uma modernização de alta performance da antiga Livraria Woody Woodpecker. Este projeto transforma uma base de código PHP procedural em uma aplicação **Laravel** robusta, escalável e segura. Funciona como uma plataforma administrativa e de cliente completa para gerenciar um catálogo literário diversificado, com foco na integridade arquitetônica e excelência em UI/UX.
 
-3. **Environment Setup:**
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
+### 🛠️ Arquitetura & Stack Tecnológica
+- **Framework:** Laravel 11.x (PHP 8.3+)
+- **Banco de Dados:** SQLite (Portátil e Configuração Zero)
+- **Frontend:** Blade Templates, Tailwind CSS v4, Vite
+- **Servidor:** Nginx, DigitalOcean VPS Deployment
+- **Autenticação:** Laravel Breeze (Autenticação Segura e Gestão de Funções)
 
-4. **Database Initialization:**
-   The project uses SQLite by default. Ensure an empty `database/database.sqlite` file exists (or Laravel will prompt to create it).
-   ```bash
-   php artisan migrate --seed
-   ```
+### ✨ Principais Funcionalidades
+- **Catálogo Inteligente:** Grade de livros responsiva com carregamento antecipado (eager loading) e mapeamento de imagens legadas.
+- **Perfis Dinâmicos:** Gestão completa de Autores e Editoras com links relacionais profundos.
+- **Hub Administrativo:** Dashboard completo com operações CRUD seguras para Livros, Autores, Gêneros e Lojas.
+- **Integridade Relacional:** Relacionamentos Eloquent avançados conectando Livros a Autores, Distribuidores e Promoções.
+- **UI Responsiva:** Estética moderna em Dark Mode otimizada para todos os dispositivos.
 
-5. **Build Assets:**
-   ```bash
-   npm run build
-   ```
+### 🏗️ Padrões de Engenharia
+- **Padrão de Projeto:** Arquitetura MVC (Model-View-Controller) moderna.
+- **Clean Code:** Adesão aos padrões PSR-12 e princípios SOLID para lógica sustentável.
+- **Git Flow:** Uso rigoroso de Commits Convencionais para controle de versão transparente.
+- **Segurança:** Proteção CSRF nativa, prevenção de SQL injection e hashing de senhas.
 
-6. **Start the Server:**
-   ```bash
-   php artisan serve
-   ```
-   Visit `http://localhost:8000` in your browser.
+---
 
-## 📂 Architecture Highlights
+# <a name="español"></a> 📚 Librería Woody Woodpecker
 
-- **Models:** Eloquent ORM with defined relationships (BelongsTo, HasMany, BelongsToMany).
-- **Controllers:** RESTful Resource Controllers with distinct public and administrative logic.
-- **Migrations & Seeders:** Fully automated database schema and legacy data migration.
-- **Security:** Built-in protection against CSRF, XSS, and SQL injection.
+### 🚀 Descripción General
+Una modernización de alto rendimiento de la antigua Librería Woody Woodpecker. Este proyecto transforma una base de código PHP procedural en una aplicación **Laravel** robusta, escalable y segura. Sirve como una plataforma administrativa y de cliente integral para gestionar un catálogo literario diverso, con un enfoque en la integridad arquitectónica y la excelencia en UI/UX.
 
-## 📝 License
+### 🛠️ Arquitectura y Stack Tecnológico
+- **Framework:** Laravel 11.x (PHP 8.3+)
+- **Base de Datos:** SQLite (Portátil y Configuración Cero)
+- **Frontend:** Blade Templates, Tailwind CSS v4, Vite
+- **Servidor:** Nginx, DigitalOcean VPS Deployment
+- **Autenticación:** Laravel Breeze (Autenticación Segura y Gestión de Roles)
 
-This project is open-sourced software licensed under the [MIT license](LICENSE).
+### ✨ Características Principales
+- **Catálogo Inteligente:** Cuadrícula de libros responsiva con carga optimizada (eager loading) y mapeo de imágenes heredadas.
+- **Perfiles Dinámicos:** Gestión integral de Autores y Editoriales con enlaces relacionales profundos.
+- **Centro Administrativo:** Panel de control completo con operaciones CRUD seguras para Libros, Autores, Géneros y Tiendas.
+- **Integridad Relacional:** Relaciones Eloquent avanzadas que conectan Libros con Autores, Distribuidores y Promociones.
+- **IU Responsiva:** Estética moderna en modo oscuro optimizada para todos los dispositivos.
+
+### 🏗️ Estándares de Ingeniería
+- **Patrón de Diseño:** Arquitectura MVC (Model-View-Controller) moderna.
+- **Código Limpio:** Cumplimiento de PSR-12 y principios SOLID para una lógica mantenible.
+- **Git Flow:** Uso estricto de Commits Convencionales para un control de versiones transparente.
+- **Seguridad:** Protección CSRF integrada, prevención de inyección SQL y cifrado de contraseñas.

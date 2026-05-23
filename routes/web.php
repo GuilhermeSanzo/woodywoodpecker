@@ -13,7 +13,10 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookCatalogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -30,7 +33,8 @@ Route::middleware('auth')->group(function () {
 
 // Public Routes
 Route::resource('authors', AuthorController::class)->only(['index', 'show']);
-Route::resource('books', BookController::class)->only(['index', 'show']);
+Route::get('/books', [BookCatalogController::class, 'index'])->name('books.index');
+Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
 Route::resource('genres', GenreController::class)->only(['index', 'show']);
 Route::resource('publishers', PublisherController::class)->only(['index', 'show']);
 Route::resource('stores', StoreController::class)->only(['index', 'show']);
@@ -54,3 +58,12 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{book}', [CartController::class, 'add'])->name('cart.add');
+Route::patch('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/cart/success', [CartController::class, 'success'])->name('cart.success');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+

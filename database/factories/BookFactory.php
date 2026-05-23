@@ -1,0 +1,36 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Book;
+use App\Models\Author;
+use App\Models\Genre;
+use App\Models\Publisher;
+use App\Models\Distributor;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Book>
+ */
+class BookFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'title' => $this->faker->words(3, true),
+            'author' => $this->faker->name(),
+            'description' => $this->faker->paragraph(),
+            'price' => $this->faker->randomFloat(2, 10, 150),
+            'stock' => $this->faker->numberBetween(5, 50),
+            'author_id' => Author::first()?->id ?? 1,
+            'genre_id' => Genre::first()?->id ?? 1,
+            'publisher_id' => Publisher::first()?->id ?? 1,
+            'distributor_id' => Distributor::first()?->id ?? 1,
+        ];
+    }
+}

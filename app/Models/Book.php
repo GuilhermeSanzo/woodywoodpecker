@@ -26,14 +26,23 @@ class Book extends Model
         'distributor_id',
         'publisher_id',
         'price',
+        'stock',
     ];
+
+    /**
+     * Get the order items for the book.
+     */
+    public function orderItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 
     /**
      * Get the author that owns the book.
      */
     public function author(): BelongsTo
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(\App\Models\Author::class, 'author_id', 'id');
     }
 
     /**

@@ -82,13 +82,33 @@ The following tables and models have been established as part of the initial mig
     - [x] **Admin Dashboard:** Transform the default dashboard into a functional management hub.
     - [x] Integrate global logo in Navbar and Favicon
     - [x] **Global Dark Footer:** Implement a global dark footer in the main layout with developer attribution.
+    - [x] Reorganize navigation layout: Move Cart to the right and My Orders into the user dropdown
 2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.
 3.  **Documentation & Portfolio:**
     - [x] **Create multi-language professional README:** Develop a high-tier presentation in English, Portuguese, and Spanish.
 4.  **Admin Panel:**
     - [x] **Authors CRUD:** Implement administrative interface for managing authors, including image uploads and secure routing.
     - [x] **Books CRUD:** Implement administrative interface for managing books, including relational dropdowns, image uploads, and secure routing.
+    - [x] **Stock Management:** Add stock field to administrative book CRUD and index.
     - [x] **Genres, Publishers, and Stores CRUD:** Implement administrative interface for managing base support entities.
     - [x] **User Management:** Implement admin controls for users and permissions.
 5.  **General Settings:**
     - [x] Update global browser tab title to WoodyWoodpecker
+
+## Feature: Book Purchasing
+- [x] Create database migrations and Eloquent models for book purchasing flow
+- [x] Create BookFactory, Seeder, Controller, and web routes for catalog listing
+- [x] Build Blade view for book catalog matching current project UI
+- [x] Implement session-based shopping cart logic and route
+- [x] Create cart view to display session items and total amount
+- [x] Implement direct checkout flow, database persistence, and success screen
+- [x] Add dynamic shopping cart link and item counter to main navigation header
+- [x] Build user order history view with nested order items
+- [x] Implement edit quantity and remove item features in cart
+
+## UI Standardization
+- [x] Update all book views to display author pseudonym by default
+- [x] Fix Add to Cart form and display dynamic stock on book details view
+- [x] Add dynamic visual feedback state (In Cart) to catalog and details purchasing buttons
+- [x] Implement clickable overlay link on catalog book cards
+- [x] Implement clickable cards and functional add-to-cart plus icon on Home page

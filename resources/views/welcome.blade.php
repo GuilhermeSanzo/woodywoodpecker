@@ -39,7 +39,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @forelse ($booksOfTheMonth as $item)
                     @if($item->book)
-                        <div class="bg-white overflow-hidden shadow-lg rounded-xl flex flex-col border border-gray-100 transform hover:-translate-y-1 transition duration-300">
+                        <div class="bg-white overflow-hidden shadow-lg rounded-xl flex flex-col border border-gray-100 transform hover:-translate-y-1 transition duration-300 relative">
+                            <a href="{{ route('books.show', $item->book) }}" class="absolute inset-0 z-0">
+                                <span class="sr-only">View {{ $item->book->title }}</span>
+                            </a>
                             <div class="p-4 bg-white flex-grow">
                                 @if($item->book->image)
                                     <img src="{{ asset($item->book->image) }}" alt="{{ $item->book->title }}" class="w-full h-72 object-cover mb-4 rounded-lg shadow-sm">
@@ -47,7 +50,7 @@
                                 
                                 <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">{{ $item->book->title }}</h3>
                                 <p class="text-sm text-indigo-600 font-medium mb-3">
-                                    {{ $item->book->author?->pseudonym ?? $item->book->author?->name ?? 'Unknown Author' }}
+                                    {{ $item->book->author?->pseudonym ?? ($item->book->author?->name ?? 'Unknown Author') }}
                                 </p>
                                 
                                 <div class="text-xs text-gray-500 flex items-center">
@@ -55,13 +58,20 @@
                                 </div>
                             </div>
                             
-                            <div class="p-4 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
+                            <div class="p-4 bg-gray-50 border-t border-gray-100 flex justify-between items-center relative z-10">
                                 <span class="text-xl font-black text-indigo-700">
                                     ${{ number_format($item->book->price, 2) }}
                                 </span>
-                                <a href="{{ route('books.show', $item->book) }}" class="p-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition duration-150">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                                </a>
+                                <form action="{{ route('cart.add', $item->book) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="p-2 {{ isset(session('cart', [])[$item->book->id]) ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-indigo-600 hover:bg-indigo-700' }} text-white rounded-full transition duration-150">
+                                        @if(isset(session('cart', [])[$item->book->id]))
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        @else
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                        @endif
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     @endif

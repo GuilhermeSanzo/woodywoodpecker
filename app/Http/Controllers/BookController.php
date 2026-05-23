@@ -15,15 +15,11 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
         $books = Book::with(['author', 'genre', 'publisher'])->paginate(10);
 
-        if ($request->is('admin/*')) {
-            return view('admin.books.index', compact('books'));
-        }
-
-        return view('books.index', compact('books'));
+        return view('admin.books.index', compact('books'));
     }
 
     /**
@@ -54,6 +50,7 @@ class BookController extends Controller
             'publisher_id' => 'required|exists:publishers,id',
             'distributor_id' => 'required|exists:distributors,id',
             'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
 
         if ($request->hasFile('image')) {
@@ -106,6 +103,7 @@ class BookController extends Controller
             'publisher_id' => 'required|exists:publishers,id',
             'distributor_id' => 'required|exists:distributors,id',
             'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
 
         if ($request->hasFile('image')) {

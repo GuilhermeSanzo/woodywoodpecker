@@ -23,6 +23,57 @@ class CartController extends Controller
     }
 
     /**
+     * Process the checkout and create an order.
+     */
+    public function checkout(Request $request)
+    {
+        $cart = session()->get('cart', []);
+
+        if (empty($cart)) {
+            return redirect()->back()->with('error', 'Your cart is empty.');
+        }
+
+        $totalAmount = 0;
+        foreach ($cart as $item) {
+            $totalAmount += $item['price'] * $item['quantity'];
+        }
+
+        $order = \App\Models\Order::create([
+            'user_id' => auth()->id() ?? 1,
+            'total_amount' => $totalAmount,
+            'status' => 'completed',
+        ]);
+
+        foreach ($cart as $item) {
+            \App\Models\OrderItem::create([
+                'order_id' => $order->id,
+                'book_id' => $item['id'],
+                'quantity' => $item['quantity'],
+                'unit_price' => $item['price'],
+            ]);
+
+            // Update book stock
+            $book = \App\Models\Book::find($item['id']);
+            if ($book) {
+                $book->decrement('stock', $item['quantity']);
+            }
+        }
+
+        session()->forget('cart');
+
+        return redirect()->route('cart.success', ['order' => $order->id]);
+    }
+
+    /**
+     * Display the success page after checkout.
+     */
+    public function success(Request $request)
+    {
+        $orderId = $request->get('order');
+        return view('cart.success', compact('orderId'));
+    }
+
+    /**
      * Add a book to the shopping cart.
      */
     public function add(Request $request, Book $book)

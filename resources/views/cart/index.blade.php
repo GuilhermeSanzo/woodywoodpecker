@@ -57,9 +57,12 @@
                                     <span class="text-2xl font-black text-indigo-700">${{ number_format($totalAmount, 2) }}</span>
                                 </div>
                                 
-                                <button class="mt-6 w-full inline-flex justify-center items-center px-6 py-3 bg-indigo-600 border border-transparent rounded-lg font-bold text-sm text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                                    {{ __('Proceed to Checkout') }}
-                                </button>
+                                <form action="{{ route('cart.checkout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="mt-6 w-full inline-flex justify-center items-center px-6 py-3 bg-indigo-600 border border-transparent rounded-lg font-bold text-sm text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                        {{ __('Proceed to Checkout') }}
+                                    </button>
+                                </form>
                                 
                                 <div class="mt-4 text-center">
                                     <a href="{{ route('books.index') }}" class="text-sm text-indigo-600 hover:text-indigo-900 font-medium">

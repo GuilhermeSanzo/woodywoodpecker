@@ -59,4 +59,6 @@ require __DIR__.'/auth.php';
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{book}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/cart/success', [CartController::class, 'success'])->name('cart.success');
 

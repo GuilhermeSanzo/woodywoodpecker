@@ -98,3 +98,4 @@ The following tables and models have been established as part of the initial mig
 - [x] Create BookFactory, Seeder, Controller, and web routes for catalog listing
 - [x] Build Blade view for book catalog matching current project UI
 - [x] Implement session-based shopping cart logic and route
+- [x] Create cart view to display session items and total amount

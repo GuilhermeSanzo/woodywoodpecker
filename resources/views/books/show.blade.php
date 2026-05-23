@@ -76,8 +76,8 @@
                             <div class="flex space-x-4">
                                 <form action="{{ route('cart.add', $book) }}" method="POST" class="flex-1">
                                     @csrf
-                                    <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-150 ease-in-out {{ $book->stock <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $book->stock <= 0 ? 'disabled' : '' }}>
-                                        Add to Cart
+                                    <button type="submit" class="w-full {{ isset(session('cart', [])[$book->id]) ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-indigo-600 hover:bg-indigo-700' }} text-white font-bold py-3 px-6 rounded-lg transition duration-150 ease-in-out {{ $book->stock <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $book->stock <= 0 ? 'disabled' : '' }}>
+                                        {{ isset(session('cart', [])[$book->id]) ? '✓ In Cart' : 'Add to Cart' }}
                                     </button>
                                 </form>
                                 <button class="p-3 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-50 transition duration-150 ease-in-out">

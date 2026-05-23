@@ -8,6 +8,21 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     /**
+     * Display the shopping cart contents.
+     */
+    public function index()
+    {
+        $cart = session()->get('cart', []);
+        $totalAmount = 0;
+
+        foreach ($cart as $item) {
+            $totalAmount += $item['price'] * $item['quantity'];
+        }
+
+        return view('cart.index', compact('cart', 'totalAmount'));
+    }
+
+    /**
      * Add a book to the shopping cart.
      */
     public function add(Request $request, Book $book)

@@ -57,5 +57,6 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
 require __DIR__.'/auth.php';
 
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{book}', [CartController::class, 'add'])->name('cart.add');
 

@@ -16,6 +16,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookCatalogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -62,4 +63,5 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{book}', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::get('/cart/success', [CartController::class, 'success'])->name('cart.success');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 

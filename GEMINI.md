@@ -100,3 +100,4 @@ The following tables and models have been established as part of the initial mig
 - [x] Implement session-based shopping cart logic and route
 - [x] Create cart view to display session items and total amount
 - [x] Implement direct checkout flow, database persistence, and success screen
+- [x] Add dynamic shopping cart link and item counter to main navigation header

@@ -109,3 +109,4 @@ The following tables and models have been established as part of the initial mig
 ## UI Standardization
 - [x] Update all book views to display author pseudonym by default
 - [x] Fix Add to Cart form and display dynamic stock on book details view
+- [x] Add dynamic visual feedback state (In Cart) to catalog and details purchasing buttons

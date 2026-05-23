@@ -54,3 +54,6 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
+

@@ -15,13 +15,9 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $books = Book::with(['author', 'genre', 'publisher'])->paginate(10);
-
-        if ($request->is('admin/*')) {
-            return view('admin.books.index', compact('books'));
-        }
+        $books = Book::all();
 
         return view('books.index', compact('books'));
     }

@@ -55,9 +55,16 @@
                                     <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Publisher</p>
                                     <p class="text-gray-900 font-medium">{{ $book->publisher?->name ?? 'N/A' }}</p>
                                 </div>
-                                <div class="col-span-2">
-                                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Price</p>
-                                    <p class="text-2xl font-bold text-indigo-600">${{ number_format($book->price, 2) }}</p>
+                                <div class="col-span-2 flex justify-between items-end">
+                                    <div>
+                                        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Price</p>
+                                        <p class="text-2xl font-bold text-indigo-600">${{ number_format($book->price, 2) }}</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-sm {{ $book->stock > 0 ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50' }} px-3 py-1 rounded-full font-bold border {{ $book->stock > 0 ? 'border-green-100' : 'border-red-100' }}">
+                                            {{ $book->stock > 0 ? 'In Stock: ' . $book->stock : 'Out of Stock' }}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -67,9 +74,12 @@
                             </div>
 
                             <div class="flex space-x-4">
-                                <button class="flex-1 bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-150 ease-in-out">
-                                    Add to Cart
-                                </button>
+                                <form action="{{ route('cart.add', $book) }}" method="POST" class="flex-1">
+                                    @csrf
+                                    <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-150 ease-in-out {{ $book->stock <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $book->stock <= 0 ? 'disabled' : '' }}>
+                                        Add to Cart
+                                    </button>
+                                </form>
                                 <button class="p-3 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-50 transition duration-150 ease-in-out">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 </button>

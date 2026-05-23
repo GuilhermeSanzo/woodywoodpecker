@@ -111,3 +111,4 @@ The following tables and models have been established as part of the initial mig
 - [x] Fix Add to Cart form and display dynamic stock on book details view
 - [x] Add dynamic visual feedback state (In Cart) to catalog and details purchasing buttons
 - [x] Implement clickable overlay link on catalog book cards
+- [x] Implement clickable cards and functional add-to-cart plus icon on Home page

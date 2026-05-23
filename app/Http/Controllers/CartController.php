@@ -23,6 +23,42 @@ class CartController extends Controller
     }
 
     /**
+     * Update the quantity of a book in the cart.
+     */
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'quantity' => 'required|numeric|min:1',
+        ]);
+
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity'] = $request->quantity;
+            session()->put('cart', $cart);
+            return redirect()->back()->with('success', 'Cart updated successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Item not found in cart.');
+    }
+
+    /**
+     * Remove a book from the cart.
+     */
+    public function remove($id)
+    {
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+            return redirect()->back()->with('success', 'Item removed from cart.');
+        }
+
+        return redirect()->back()->with('error', 'Item not found in cart.');
+    }
+
+    /**
      * Process the checkout and create an order.
      */
     public function checkout(Request $request)

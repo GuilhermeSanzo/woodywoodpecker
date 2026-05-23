@@ -61,6 +61,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{book}', [CartController::class, 'add'])->name('cart.add');
+Route::patch('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::get('/cart/success', [CartController::class, 'success'])->name('cart.success');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');

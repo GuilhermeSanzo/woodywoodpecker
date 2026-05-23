@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $booksOfTheMonth = BookOfTheMonth::with(['book.genre'])
+        $booksOfTheMonth = BookOfTheMonth::with(['book.author', 'book.genre'])
             ->where('is_active', true)
             ->get();
 

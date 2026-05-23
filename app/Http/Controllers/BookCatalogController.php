@@ -12,7 +12,7 @@ class BookCatalogController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::with(['author', 'genre', 'publisher'])->get();
 
         return view('books.index', compact('books'));
     }

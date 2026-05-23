@@ -47,7 +47,7 @@
                                 
                                 <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">{{ $item->book->title }}</h3>
                                 <p class="text-sm text-indigo-600 font-medium mb-3">
-                                    {{ $item->book->author ?? 'Unknown Author' }}
+                                    {{ $item->book->author?->name ?? 'Unknown Author' }}
                                 </p>
                                 
                                 <div class="text-xs text-gray-500 flex items-center">

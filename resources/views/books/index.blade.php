@@ -20,7 +20,7 @@
                             @endif
 
                             <h3 class="font-semibold text-lg text-gray-900 mb-1 leading-tight">{{ $book->title }}</h3>
-                            <p class="text-sm text-gray-600 mb-4 italic">{{ $book->author ?? ($book->author_relation?->name ?? 'Unknown Author') }}</p>
+                            <p class="text-sm text-gray-600 mb-4 italic">{{ $book->author?->name ?? 'Unknown Author' }}</p>
                             
                             <div class="flex justify-between items-center mt-auto">
                                 <span class="text-xl font-bold text-indigo-700">

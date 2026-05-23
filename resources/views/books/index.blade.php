@@ -9,7 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($books as $book)
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg flex flex-col border border-gray-200 hover:shadow-md transition-shadow duration-300">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg flex flex-col border border-gray-200 hover:shadow-md transition-shadow duration-300 relative">
+                        <a href="{{ route('books.show', $book) }}" class="absolute inset-0 z-0">
+                            <span class="sr-only">View {{ $book->title }}</span>
+                        </a>
                         <div class="p-6 flex-grow">
                             @if($book->image)
                                 <img src="{{ asset($book->image) }}" alt="{{ $book->title }}" class="w-full h-48 object-cover mb-4 rounded shadow-sm">
@@ -32,7 +35,7 @@
                             </div>
                         </div>
                         
-                        <div class="p-6 pt-0">
+                        <div class="p-6 pt-0 relative z-10">
                             <form action="{{ route('cart.add', $book) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2 {{ isset(session('cart', [])[$book->id]) ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-indigo-600 hover:bg-indigo-700' }} border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 {{ $book->stock <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}" {{ $book->stock <= 0 ? 'disabled' : '' }}>

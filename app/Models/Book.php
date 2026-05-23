@@ -19,6 +19,7 @@ class Book extends Model
     protected $fillable = [
         'title',
         'subtitle',
+        'author',
         'description',
         'image',
         'author_id',
@@ -26,7 +27,16 @@ class Book extends Model
         'distributor_id',
         'publisher_id',
         'price',
+        'stock',
     ];
+
+    /**
+     * Get the order items for the book.
+     */
+    public function orderItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 
     /**
      * Get the author that owns the book.

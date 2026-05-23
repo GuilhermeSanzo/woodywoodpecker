@@ -105,3 +105,6 @@ The following tables and models have been established as part of the initial mig
 - [x] Add dynamic shopping cart link and item counter to main navigation header
 - [x] Build user order history view with nested order items
 - [x] Implement edit quantity and remove item features in cart
+
+## UI Standardization
+- [x] Update all book views to display author pseudonym by default

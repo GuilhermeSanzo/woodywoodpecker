@@ -41,7 +41,7 @@
                                 <div class="flex items-center text-lg text-indigo-600 font-semibold mb-6">
                                     <span class="mr-2">by</span>
                                     <a href="{{ $book->author ? route('authors.show', $book->author->id) : '#' }}" class="hover:underline">
-                                        {{ $book->author?->name ?? 'Unknown Author' }}
+                                        {{ $book->author?->pseudonym ?? ($book->author?->name ?? 'Unknown Author') }}
                                     </a>
                                 </div>
                             </div>

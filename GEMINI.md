@@ -102,3 +102,4 @@ The following tables and models have been established as part of the initial mig
 - [x] Implement direct checkout flow, database persistence, and success screen
 - [x] Add dynamic shopping cart link and item counter to main navigation header
 - [x] Build user order history view with nested order items
+- [x] Implement edit quantity and remove item features in cart

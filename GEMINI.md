@@ -96,3 +96,4 @@ The following tables and models have been established as part of the initial mig
 ## Feature: Book Purchasing
 - [x] Create database migrations and Eloquent models for book purchasing flow
 - [x] Create BookFactory, Seeder, Controller, and web routes for catalog listing
+- [x] Build Blade view for book catalog matching current project UI

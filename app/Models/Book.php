@@ -41,7 +41,7 @@ class Book extends Model
     /**
      * Get the author that owns the book.
      */
-    public function author_relation(): BelongsTo
+    public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class, 'author_id');
     }

@@ -82,6 +82,7 @@ The following tables and models have been established as part of the initial mig
     - [x] **Admin Dashboard:** Transform the default dashboard into a functional management hub.
     - [x] Integrate global logo in Navbar and Favicon
     - [x] **Global Dark Footer:** Implement a global dark footer in the main layout with developer attribution.
+    - [x] Reorganize navigation layout: Move Cart to the right and My Orders into the user dropdown
 2.  **Controller Implementation:** Complete the RESTful logic for the remaining Resource Controllers.
 3.  **Documentation & Portfolio:**
     - [x] **Create multi-language professional README:** Develop a high-tier presentation in English, Portuguese, and Spanish.

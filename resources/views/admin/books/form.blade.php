@@ -92,6 +92,13 @@
                             <x-input-error :messages="$errors->get('price')" class="mt-2" />
                         </div>
 
+                        <!-- Stock -->
+                        <div>
+                            <x-input-label for="stock" :value="__('Stock')" />
+                            <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" :value="old('stock', $book->stock ?? '0')" min="0" required />
+                            <x-input-error :messages="$errors->get('stock')" class="mt-2" />
+                        </div>
+
                         <!-- Image -->
                         <div>
                             <x-input-label for="image" :value="__('Book Cover Image')" />

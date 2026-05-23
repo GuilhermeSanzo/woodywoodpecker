@@ -50,6 +50,7 @@ class BookController extends Controller
             'publisher_id' => 'required|exists:publishers,id',
             'distributor_id' => 'required|exists:distributors,id',
             'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
 
         if ($request->hasFile('image')) {
@@ -102,6 +103,7 @@ class BookController extends Controller
             'publisher_id' => 'required|exists:publishers,id',
             'distributor_id' => 'required|exists:distributors,id',
             'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
 
         if ($request->hasFile('image')) {

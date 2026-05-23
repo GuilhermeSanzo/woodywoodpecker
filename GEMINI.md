@@ -92,3 +92,6 @@ The following tables and models have been established as part of the initial mig
     - [x] **User Management:** Implement admin controls for users and permissions.
 5.  **General Settings:**
     - [x] Update global browser tab title to WoodyWoodpecker
+
+## Feature: Book Purchasing
+- [x] Create database migrations and Eloquent models for book purchasing flow

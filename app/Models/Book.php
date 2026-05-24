@@ -76,4 +76,12 @@ class Book extends Model
     {
         return $this->belongsToMany(Promotion::class);
     }
+
+    /**
+     * The users that have favorited the book.
+     */
+    public function favoritedBy(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'book_user');
+    }
 }

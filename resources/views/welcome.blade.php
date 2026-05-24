@@ -3,7 +3,7 @@
     <div class="relative bg-indigo-900 overflow-hidden">
         <div class="absolute inset-0">
             @php
-                $heroImage = file_exists(public_path('uploads/fundo.jpg')) ? asset('uploads/fundo.jpg') : null;
+                $heroImage = file_exists(public_path('storage/books/fundo.jpg')) ? asset('storage/books/fundo.jpg') : (file_exists(public_path('uploads/fundo.jpg')) ? asset('uploads/fundo.jpg') : null);
             @endphp
             @if($heroImage)
                 <img class="w-full h-full object-cover opacity-30" src="{{ $heroImage }}" alt="Woody Woodpecker Hero">
@@ -45,7 +45,7 @@
                             </a>
                             <div class="p-4 bg-white flex-grow">
                                 @if($item->book->image)
-                                    <img src="{{ asset($item->book->image) }}" alt="{{ $item->book->title }}" class="w-full h-72 object-cover mb-4 rounded-lg shadow-sm">
+                                    <img src="{{ asset('storage/' . $item->book->image) }}" alt="{{ $item->book->title }}" class="w-full h-72 object-cover mb-4 rounded-lg shadow-sm">
                                 @endif
                                 
                                 <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">{{ $item->book->title }}</h3>
@@ -97,7 +97,7 @@
                                 <div class="relative">
                                     <div class="absolute inset-0 bg-indigo-600 rounded-full transform group-hover:scale-110 transition duration-300 opacity-0 group-hover:opacity-20"></div>
                                     @if($item->author->image)
-                                        <img class="h-24 w-24 rounded-full object-cover shadow-md border-2 border-white" src="{{ asset($item->author->image) }}" alt="{{ $item->author->name }}">
+                                        <img class="h-24 w-24 rounded-full object-cover shadow-md border-2 border-white" src="{{ asset('storage/' . $item->author->image) }}" alt="{{ $item->author->name }}">
                                     @else
                                         <div class="h-24 w-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
                                             <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>

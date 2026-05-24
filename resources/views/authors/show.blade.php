@@ -21,7 +21,7 @@
                         <div class="md:w-1/3">
                             <div class="rounded-full overflow-hidden shadow-xl border-4 border-white aspect-square bg-gray-100">
                                 @if($author->image)
-                                    <img src="{{ asset($author->image) }}" alt="{{ $author->name }}" class="w-full h-full object-cover">
+                                    <img src="{{ asset('storage/' . $author->image) }}" alt="{{ $author->name }}" class="w-full h-full object-cover">
                                 @else
                                     <div class="w-full h-full flex items-center justify-center text-gray-400 italic">
                                         No image available
@@ -64,7 +64,7 @@
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg flex flex-col hover:shadow-md transition-shadow duration-200">
                             <div class="p-6 bg-white border-b border-gray-200 flex-grow">
                                 @if($book->image)
-                                    <img src="{{ asset($book->image) }}" alt="{{ $book->title }}" class="w-full h-64 object-cover mb-4 rounded">
+                                    <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->title }}" class="w-full h-64 object-cover mb-4 rounded">
                                 @endif
                                 
                                 <h3 class="text-lg font-bold text-gray-900 mb-2">{{ $book->title }}</h3>

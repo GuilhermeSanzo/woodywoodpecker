@@ -104,7 +104,7 @@
                             <x-input-label for="image" :value="__('Book Cover Image')" />
                             @if(isset($book) && $book->image)
                                 <div class="mb-2">
-                                    <img src="{{ str_starts_with($book->image, 'http') ? $book->image : asset($book->image) }}" alt="{{ $book->title }}" class="h-20 w-20 object-cover rounded shadow-sm border border-gray-200">
+                                    <img src="{{ str_starts_with($book->image, 'http') ? $book->image : asset('storage/' . $book->image) }}" alt="{{ $book->title }}" class="h-20 w-20 object-cover rounded shadow-sm border border-gray-200">
                                 </div>
                             @endif
                             <input id="image" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="file" name="image" />

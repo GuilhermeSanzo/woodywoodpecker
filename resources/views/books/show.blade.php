@@ -21,7 +21,7 @@
                         <div class="md:col-span-1">
                             <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
                                 @if($book->image)
-                                    <img src="{{ asset($book->image) }}" alt="{{ $book->title }}" class="w-full h-auto object-cover">
+                                    <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->title }}" class="w-full h-auto object-cover">
                                 @else
                                     <div class="w-full h-96 flex items-center justify-center text-gray-400 italic">
                                         No cover available

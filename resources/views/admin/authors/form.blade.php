@@ -48,7 +48,7 @@
                             <x-input-label for="image" :value="__('Author Image')" />
                             @if(isset($author) && $author->image)
                                 <div class="mb-2">
-                                    <img src="{{ str_starts_with($author->image, 'http') ? $author->image : asset($author->image) }}" alt="{{ $author->name }}" class="h-20 w-20 object-cover rounded shadow-sm border border-gray-200">
+                                    <img src="{{ str_starts_with($author->image, 'http') ? $author->image : asset('storage/' . $author->image) }}" alt="{{ $author->name }}" class="h-20 w-20 object-cover rounded shadow-sm border border-gray-200">
                                 </div>
                             @endif
                             <input id="image" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="file" name="image" />

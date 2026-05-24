@@ -123,3 +123,9 @@ The following tables and models have been established as part of the initial mig
 - [x] Implement avatar upload, storage logic, and profile view integration
 - [x] Safely remove legacy image column using defensive migration
 - [x] Display dynamic user avatar in the navigation bar
+
+## Refactor: Media Management
+- [x] Create Artisan command to migrate legacy media files to internal storage
+- [x] Fix book and author image URLs in Blade views by prepending the storage asset path
+- [x] Refactor Book and Author controllers to use Storage facade for new uploads and automatic file cleanup
+- [x] Fix book and author image URLs in dashboard CRUD views by prepending the storage asset path

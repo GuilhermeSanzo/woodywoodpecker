@@ -126,3 +126,4 @@ The following tables and models have been established as part of the initial mig
 
 ## Refactor: Media Management
 - [x] Create Artisan command to migrate legacy media files to internal storage
+- [x] Fix book and author image URLs in Blade views by prepending the storage asset path

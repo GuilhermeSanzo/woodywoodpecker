@@ -128,3 +128,4 @@ The following tables and models have been established as part of the initial mig
 - [x] Create Artisan command to migrate legacy media files to internal storage
 - [x] Fix book and author image URLs in Blade views by prepending the storage asset path
 - [x] Refactor Book and Author controllers to use Storage facade for new uploads and automatic file cleanup
+- [x] Fix book and author image URLs in dashboard CRUD views by prepending the storage asset path

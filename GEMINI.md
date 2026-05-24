@@ -115,3 +115,4 @@ The following tables and models have been established as part of the initial mig
 
 ## Feature: Wishlist
 - [x] Implement book_user pivot table, model relationships, and toggle controller
+- [x] Implement functional and reactive heart toggle button on book details view

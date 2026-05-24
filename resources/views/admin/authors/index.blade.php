@@ -35,7 +35,7 @@
                             @forelse($authors as $author)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <img src="{{ $author->image ? (str_starts_with($author->image, 'http') ? $author->image : asset($author->image)) : asset('uploads/imagem_padrao.jpg') }}" alt="{{ $author->name }}" class="h-10 w-10 rounded-full object-cover border border-gray-200 shadow-sm">
+                                        <img src="{{ $author->image ? (str_starts_with($author->image, 'http') ? $author->image : asset('storage/' . $author->image)) : asset('uploads/imagem_padrao.jpg') }}" alt="{{ $author->name }}" class="h-10 w-10 rounded-full object-cover border border-gray-200 shadow-sm">
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $author->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $author->pseudonym ?? '-' }}</td>

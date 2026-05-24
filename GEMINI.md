@@ -117,3 +117,9 @@ The following tables and models have been established as part of the initial mig
 - [x] Implement book_user pivot table, model relationships, and toggle controller
 - [x] Implement functional and reactive heart toggle button on book details view
 - [x] Create wishlist index view with responsive grid and navigation link
+
+## Feature: User Avatar
+- [x] Add avatar_path column to users table and update User model fillable properties
+- [x] Implement avatar upload, storage logic, and profile view integration
+- [x] Safely remove legacy image column using defensive migration
+- [x] Display dynamic user avatar in the navigation bar

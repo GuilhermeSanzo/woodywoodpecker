@@ -121,3 +121,4 @@ The following tables and models have been established as part of the initial mig
 ## Feature: User Avatar
 - [x] Add avatar_path column to users table and update User model fillable properties
 - [x] Implement avatar upload, storage logic, and profile view integration
+- [x] Safely remove legacy image column using defensive migration

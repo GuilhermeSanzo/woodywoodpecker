@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AuthorController extends Controller
 {
@@ -44,9 +45,8 @@ class AuthorController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('uploads'), $imageName);
-            $validated['image'] = 'uploads/' . $imageName;
+            $path = $request->file('image')->store('authors', 'public');
+            $validated['image'] = $path;
         }
 
         Author::create($validated);
@@ -88,11 +88,13 @@ class AuthorController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            // Delete old image if it exists and it's not a legacy image (optional, but good practice)
-            // For now, just upload the new one
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('uploads'), $imageName);
-            $validated['image'] = $imageName;
+            // Delete old image if it exists
+            if ($author->image) {
+                Storage::disk('public')->delete($author->image);
+            }
+
+            $path = $request->file('image')->store('authors', 'public');
+            $validated['image'] = $path;
         }
 
         $author->update($validated);
@@ -106,6 +108,11 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        // Delete image if it exists
+        if ($author->image) {
+            Storage::disk('public')->delete($author->image);
+        }
+
         $author->delete();
 
         return redirect()->route('admin.authors.index')

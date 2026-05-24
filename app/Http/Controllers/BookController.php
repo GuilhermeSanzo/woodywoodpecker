@@ -8,7 +8,7 @@ use App\Models\Genre;
 use App\Models\Publisher;
 use App\Models\Distributor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -54,9 +54,8 @@ class BookController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('uploads'), $imageName);
-            $validated['image'] = 'uploads/' . $imageName;
+            $path = $request->file('image')->store('books', 'public');
+            $validated['image'] = $path;
         }
 
         Book::create($validated);
@@ -108,13 +107,12 @@ class BookController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete old image if it exists
-            if ($book->image && File::exists(public_path($book->image))) {
-                File::delete(public_path($book->image));
+            if ($book->image) {
+                Storage::disk('public')->delete($book->image);
             }
 
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('uploads'), $imageName);
-            $validated['image'] = 'uploads/' . $imageName;
+            $path = $request->file('image')->store('books', 'public');
+            $validated['image'] = $path;
         }
 
         $book->update($validated);
@@ -129,8 +127,8 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         // Delete image if it exists
-        if ($book->image && File::exists(public_path($book->image))) {
-            File::delete(public_path($book->image));
+        if ($book->image) {
+            Storage::disk('public')->delete($book->image);
         }
 
         $book->delete();

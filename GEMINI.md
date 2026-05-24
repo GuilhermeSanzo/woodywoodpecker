@@ -112,3 +112,8 @@ The following tables and models have been established as part of the initial mig
 - [x] Add dynamic visual feedback state (In Cart) to catalog and details purchasing buttons
 - [x] Implement clickable overlay link on catalog book cards
 - [x] Implement clickable cards and functional add-to-cart plus icon on Home page
+
+## Feature: Wishlist
+- [x] Implement book_user pivot table, model relationships, and toggle controller
+- [x] Implement functional and reactive heart toggle button on book details view
+- [x] Create wishlist index view with responsive grid and navigation link

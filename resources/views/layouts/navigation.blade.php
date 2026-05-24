@@ -59,6 +59,10 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link :href="route('wishlist.index')">
+                                {{ __('My Wishlist') }}
+                            </x-dropdown-link>
+
                             <x-dropdown-link :href="route('orders.index')">
                                 {{ __('My Orders') }}
                             </x-dropdown-link>
@@ -135,6 +139,10 @@
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('profile.edit')">
                         {{ __('Profile') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('wishlist.index')">
+                        {{ __('My Wishlist') }}
                     </x-responsive-nav-link>
 
                     <x-responsive-nav-link :href="route('orders.index')">

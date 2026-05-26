@@ -12,7 +12,14 @@ class GenreController extends Controller
      */
     public function index(Request $request)
     {
-        $genres = Genre::orderBy('name')->paginate(10);
+        $query = Genre::latest();
+
+        if ($request->is('admin/*') && $request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('name', 'LIKE', "%{$searchTerm}%");
+        }
+
+        $genres = $query->paginate(10);
 
         if ($request->is('admin/*')) {
             return view('admin.genres.index', compact('genres'));

@@ -12,7 +12,14 @@ class PublisherController extends Controller
      */
     public function index(Request $request)
     {
-        $publishers = Publisher::orderBy('name')->paginate(10);
+        $query = Publisher::latest();
+
+        if ($request->is('admin/*') && $request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('name', 'LIKE', "%{$searchTerm}%");
+        }
+
+        $publishers = $query->paginate(10);
 
         if ($request->is('admin/*')) {
             return view('admin.publishers.index', compact('publishers'));

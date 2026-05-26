@@ -15,9 +15,17 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::with(['author', 'genre', 'publisher'])->paginate(10);
+        $query = Book::with(['author', 'genre', 'publisher'])->latest();
+
+        if ($request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('title', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('subtitle', 'LIKE', "%{$searchTerm}%");
+        }
+
+        $books = $query->paginate(10);
 
         return view('admin.books.index', compact('books'));
     }

@@ -137,3 +137,13 @@ The following tables and models have been established as part of the initial mig
 - [x] Implement global search functionality with navbar input and dedicated results page
 - [x] Add real-time AJAX search and descending sort to dashboard CRUD tables
 - [x] Expand real-time search and descending sort to all administrative CRUDs (Users, Genres, Publishers, Stores)
+
+## Style: UI/UX Enhancements
+- [x] Add homogeneous minimalist SVG icons to all global navigation links
+- [x] Restructure navbar layout: enlarge central search bar and move Dashboard to user dropdown
+- [x] Implement dynamic browser tab titles and fix storage image path on the wishlist page
+- [x] Customize Login and Registration pages with WoodyWoodpecker branding
+
+
+
+

@@ -1,3 +1,4 @@
+@section('title', 'Home')
 <x-app-layout>
     <!-- Hero Section -->
     <div class="relative bg-indigo-900 overflow-hidden">

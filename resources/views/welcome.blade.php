@@ -122,6 +122,12 @@
                     </div>
                 @endforelse
             </div>
+
+            <div class="mt-12 flex justify-end">
+                <a href="{{ route('authors.index') }}" class="text-indigo-600 font-semibold hover:text-indigo-900 transition duration-150">
+                    View All Authors &rarr;
+                </a>
+            </div>
         </div>
     </div>
 </x-app-layout>

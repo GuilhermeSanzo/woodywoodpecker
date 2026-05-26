@@ -133,3 +133,4 @@ The following tables and models have been established as part of the initial mig
 ## Feature: Discovery and Navigation
 - [x] Create public Authors catalog, add to global navigation, and insert public view shortcuts in dashboard CRUDs
 - [x] Add View All Authors link to the home page for UI consistency
+- [x] Fix back navigation link on author details page to point to authors index

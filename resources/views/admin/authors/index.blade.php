@@ -40,6 +40,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $author->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $author->pseudonym ?? '-' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="{{ route('authors.show', $author) }}" class="text-green-600 hover:text-green-900 mr-3" target="_blank">View</a>
                                         <a href="{{ route('admin.authors.edit', $author) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
                                         <form action="{{ route('admin.authors.destroy', $author) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this author?');">
                                             @csrf

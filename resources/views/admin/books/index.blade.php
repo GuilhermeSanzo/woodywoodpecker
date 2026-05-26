@@ -51,6 +51,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">${{ number_format($book->price, 2) }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $book->stock }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="{{ route('books.show', $book) }}" class="text-green-600 hover:text-green-900 mr-3" target="_blank">View</a>
                                         <a href="{{ route('admin.books.edit', $book) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
                                         <form action="{{ route('admin.books.destroy', $book) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this book?');">
                                             @csrf

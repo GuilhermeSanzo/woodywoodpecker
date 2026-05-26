@@ -135,3 +135,5 @@ The following tables and models have been established as part of the initial mig
 - [x] Add View All Authors link to the home page for UI consistency
 - [x] Fix back navigation link on author details page to point to authors index
 - [x] Implement global search functionality with navbar input and dedicated results page
+- [x] Add real-time AJAX search and descending sort to dashboard CRUD tables
+- [x] Expand real-time search and descending sort to all administrative CRUDs (Users, Genres, Publishers, Stores)

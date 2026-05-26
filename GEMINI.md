@@ -140,4 +140,8 @@ The following tables and models have been established as part of the initial mig
 
 ## Style: UI/UX Enhancements
 - [x] Add homogeneous minimalist SVG icons to all global navigation links
+- [x] Restructure navbar layout: enlarge central search bar and move Dashboard to user dropdown
+- [x] Implement dynamic browser tab titles and fix storage image path on the wishlist page
+
+
 

@@ -129,3 +129,11 @@ The following tables and models have been established as part of the initial mig
 - [x] Fix book and author image URLs in Blade views by prepending the storage asset path
 - [x] Refactor Book and Author controllers to use Storage facade for new uploads and automatic file cleanup
 - [x] Fix book and author image URLs in dashboard CRUD views by prepending the storage asset path
+
+## Feature: Discovery and Navigation
+- [x] Create public Authors catalog, add to global navigation, and insert public view shortcuts in dashboard CRUDs
+- [x] Add View All Authors link to the home page for UI consistency
+- [x] Fix back navigation link on author details page to point to authors index
+- [x] Implement global search functionality with navbar input and dedicated results page
+- [x] Add real-time AJAX search and descending sort to dashboard CRUD tables
+- [x] Expand real-time search and descending sort to all administrative CRUDs (Users, Genres, Publishers, Stores)

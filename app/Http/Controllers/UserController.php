@@ -16,7 +16,16 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::with('userType')->paginate(10);
+        $query = User::with('userType')->latest();
+
+        if ($request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('name', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('email', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('username', 'LIKE', "%{$searchTerm}%");
+        }
+
+        $users = $query->paginate(10);
 
         return view('admin.users.index', compact('users'));
     }

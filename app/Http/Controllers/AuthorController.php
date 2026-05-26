@@ -13,7 +13,15 @@ class AuthorController extends Controller
      */
     public function index(Request $request)
     {
-        $authors = Author::paginate(10);
+        $query = Author::with('books')->latest();
+
+        if ($request->is('admin/*') && $request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('name', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('pseudonym', 'LIKE', "%{$searchTerm}%");
+        }
+
+        $authors = $query->paginate(10);
 
         if ($request->is('admin/*')) {
             return view('admin.authors.index', compact('authors'));

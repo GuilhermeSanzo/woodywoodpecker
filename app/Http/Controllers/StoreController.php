@@ -12,7 +12,15 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        $stores = Store::orderBy('name')->paginate(10);
+        $query = Store::latest();
+
+        if ($request->is('admin/*') && $request->has('search')) {
+            $searchTerm = $request->search;
+            $query->where('name', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('city', 'LIKE', "%{$searchTerm}%");
+        }
+
+        $stores = $query->paginate(10);
 
         if ($request->is('admin/*')) {
             return view('admin.stores.index', compact('stores'));

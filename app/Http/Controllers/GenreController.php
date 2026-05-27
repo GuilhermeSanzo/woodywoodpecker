@@ -19,7 +19,8 @@ class GenreController extends Controller
             $query->where('name', 'LIKE', "%{$searchTerm}%");
         }
 
-        $genres = $query->paginate(10);
+        $perPage = $request->is('admin/*') ? 10 : 12;
+        $genres = $query->paginate($perPage);
 
         if ($request->is('admin/*')) {
             return view('admin.genres.index', compact('genres'));

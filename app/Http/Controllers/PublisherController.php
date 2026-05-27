@@ -19,7 +19,8 @@ class PublisherController extends Controller
             $query->where('name', 'LIKE', "%{$searchTerm}%");
         }
 
-        $publishers = $query->paginate(10);
+        $perPage = $request->is('admin/*') ? 10 : 12;
+        $publishers = $query->paginate($perPage);
 
         if ($request->is('admin/*')) {
             return view('admin.publishers.index', compact('publishers'));

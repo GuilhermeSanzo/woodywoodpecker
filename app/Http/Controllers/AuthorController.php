@@ -21,7 +21,8 @@ class AuthorController extends Controller
                   ->orWhere('pseudonym', 'LIKE', "%{$searchTerm}%");
         }
 
-        $authors = $query->paginate(10);
+        $perPage = $request->is('admin/*') ? 10 : 12;
+        $authors = $query->paginate($perPage);
 
         if ($request->is('admin/*')) {
             return view('admin.authors.index', compact('authors'));

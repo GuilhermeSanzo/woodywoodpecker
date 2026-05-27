@@ -95,6 +95,9 @@ The following tables and models have been established as part of the initial mig
 5.  **General Settings:**
     - [x] Update global browser tab title to WoodyWoodpecker
 
+## Feature: Public Catalog Expansion
+- [x] Create public views for Genres, Publishers, and Stores, and group navigation under a Catalog dropdown
+
 ## Feature: Book Purchasing
 - [x] Create database migrations and Eloquent models for book purchasing flow
 - [x] Create BookFactory, Seeder, Controller, and web routes for catalog listing

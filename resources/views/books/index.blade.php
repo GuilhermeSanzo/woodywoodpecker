@@ -53,6 +53,10 @@
                     <p class="text-gray-500 italic">{{ __('No books found in the catalog.') }}</p>
                 </div>
             @endif
+
+            <div class="mt-12">
+                {{ $books->links() }}
+            </div>
         </div>
     </div>
 </x-app-layout>

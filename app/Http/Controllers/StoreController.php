@@ -20,7 +20,8 @@ class StoreController extends Controller
                   ->orWhere('city', 'LIKE', "%{$searchTerm}%");
         }
 
-        $stores = $query->paginate(10);
+        $perPage = $request->is('admin/*') ? 10 : 12;
+        $stores = $query->paginate($perPage);
 
         if ($request->is('admin/*')) {
             return view('admin.stores.index', compact('stores'));

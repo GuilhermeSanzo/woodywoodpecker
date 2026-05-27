@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Genre;
+use App\Models\Publisher;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
     /**
-     * Display search results for books and authors.
+     * Display search results for books, authors, genres, publishers, and stores.
      */
     public function index(Request $request)
     {
@@ -31,6 +34,19 @@ class SearchController extends Controller
             ->with('books')
             ->get();
 
-        return view('search.results', compact('books', 'authors', 'query'));
+        $genres = Genre::where('name', 'LIKE', "%{$query}%")
+            ->with('books')
+            ->get();
+
+        $publishers = Publisher::where('name', 'LIKE', "%{$query}%")
+            ->with('books')
+            ->get();
+
+        $stores = Store::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('city', 'LIKE', "%{$query}%")
+            ->orWhere('neighborhood', 'LIKE', "%{$query}%")
+            ->get();
+
+        return view('search.results', compact('books', 'authors', 'genres', 'publishers', 'stores', 'query'));
     }
 }

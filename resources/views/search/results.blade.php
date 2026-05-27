@@ -56,7 +56,7 @@
             </div>
 
             <!-- Authors Results -->
-            <div>
+            <div class="mb-12">
                 <h3 class="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-indigo-600 pl-4">{{ __('Authors') }}</h3>
                 @if($authors->isNotEmpty())
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -93,6 +93,117 @@
                 @else
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8 text-center border border-gray-100">
                         <p class="text-gray-500 italic">{{ __('No authors found matching your search.') }}</p>
+                    </div>
+                @endif
+            </div>
+
+            <!-- Genres Results -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-indigo-600 pl-4">{{ __('Genres') }}</h3>
+                @if($genres->isNotEmpty())
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+                        @foreach($genres as $genre)
+                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-200 hover:shadow-md transition duration-150 ease-in-out flex flex-col relative">
+                                <a href="{{ route('genres.show', $genre) }}" class="absolute inset-0 z-0">
+                                    <span class="sr-only">View books in {{ $genre->name }}</span>
+                                </a>
+                                <div class="p-6 flex-grow flex flex-col justify-between">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="bg-indigo-50 p-3 rounded-full text-indigo-600">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-900 truncate">{{ $genre->name }}</h3>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center relative z-10">
+                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                            {{ $genre->books->count() }} {{ \Illuminate\Support\Str::plural('Book', $genre->books->count()) }}
+                                        </span>
+                                        <span class="text-indigo-600 hover:text-indigo-900 font-medium text-sm">Browse &rarr;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8 text-center border border-gray-100">
+                        <p class="text-gray-500 italic">{{ __('No genres found matching your search.') }}</p>
+                    </div>
+                @endif
+            </div>
+
+            <!-- Publishers Results -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-indigo-600 pl-4">{{ __('Publishers') }}</h3>
+                @if($publishers->isNotEmpty())
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        @foreach($publishers as $publisher)
+                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-200 hover:shadow-md transition duration-150 ease-in-out flex flex-col relative">
+                                <a href="{{ route('publishers.show', $publisher) }}" class="absolute inset-0 z-0">
+                                    <span class="sr-only">View books from {{ $publisher->name }}</span>
+                                </a>
+                                <div class="p-6 flex-grow flex flex-col justify-between">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="bg-amber-50 p-3 rounded-full text-amber-600">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-900 truncate">{{ $publisher->name }}</h3>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center relative z-10">
+                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                            {{ $publisher->books->count() }} {{ \Illuminate\Support\Str::plural('Book', $publisher->books->count()) }}
+                                        </span>
+                                        <span class="text-indigo-600 hover:text-indigo-900 font-medium text-sm">View Books &rarr;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8 text-center border border-gray-100">
+                        <p class="text-gray-500 italic">{{ __('No publishers found matching your search.') }}</p>
+                    </div>
+                @endif
+            </div>
+
+            <!-- Stores Results -->
+            <div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-indigo-600 pl-4">{{ __('Stores') }}</h3>
+                @if($stores->isNotEmpty())
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        @foreach($stores as $store)
+                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-200 hover:shadow-md transition duration-150 ease-in-out flex flex-col relative">
+                                <a href="{{ route('stores.show', $store) }}" class="absolute inset-0 z-0">
+                                    <span class="sr-only">View details for {{ $store->name }}</span>
+                                </a>
+                                <div class="p-6 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="bg-emerald-50 p-3 rounded-full text-emerald-600">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-lg font-bold text-gray-900 truncate">{{ $store->name }}</h3>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mb-2">
+                                            <span class="font-medium">{{ $store->street_type }} {{ $store->address }}, {{ $store->number }}</span><br>
+                                            {{ $store->neighborhood }}, {{ $store->city }} - {{ $store->state }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end items-center relative z-10">
+                                        <span class="text-indigo-600 hover:text-indigo-900 font-medium text-sm">View Details &rarr;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8 text-center border border-gray-100">
+                        <p class="text-gray-500 italic">{{ __('No stores found matching your search.') }}</p>
                     </div>
                 @endif
             </div>

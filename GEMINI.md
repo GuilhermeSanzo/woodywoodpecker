@@ -147,6 +147,8 @@ The following tables and models have been established as part of the initial mig
 - [x] Restructure navbar layout: enlarge central search bar and move Dashboard to user dropdown
 - [x] Implement dynamic browser tab titles and fix storage image path on the wishlist page
 - [x] Customize Login and Registration pages with WoodyWoodpecker branding
+- [x] Fix card grid layout gaps in public Genres and Authors index pages
+- [x] Adjust public catalog pagination to 12 items to perfectly fill the 4-column grid
 
 
 

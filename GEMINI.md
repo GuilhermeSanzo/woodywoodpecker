@@ -98,6 +98,7 @@ The following tables and models have been established as part of the initial mig
 ## Feature: Public Catalog Expansion
 - [x] Create public views for Genres, Publishers, and Stores, and group navigation under a Catalog dropdown
 - [x] Create public detail pages for genres, publishers, stores and add dashboard view shortcuts
+- [x] Expand global search to include Genres, Publishers, and Stores
 
 ## Feature: Book Purchasing
 - [x] Create database migrations and Eloquent models for book purchasing flow

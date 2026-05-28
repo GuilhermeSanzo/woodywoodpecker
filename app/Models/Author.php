@@ -22,6 +22,7 @@ class Author extends Model
         'birth_date',
         'death_date',
         'description',
+        'views_count',
     ];
 
     /**

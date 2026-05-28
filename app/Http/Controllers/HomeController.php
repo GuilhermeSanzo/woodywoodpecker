@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookOfTheMonth;
-use App\Models\FeaturedAuthor;
+use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,14 +13,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $booksOfTheMonth = BookOfTheMonth::with(['book.author', 'book.genre'])
-            ->where('is_active', true)
+        $popularBooks = Book::with(['author', 'genre'])
+            ->orderByDesc('views_count')
+            ->take(8)
             ->get();
 
-        $featuredAuthors = FeaturedAuthor::with(['author'])
-            ->where('is_active', true)
+        $popularAuthors = Author::orderByDesc('views_count')
+            ->take(6)
             ->get();
 
-        return view('welcome', compact('booksOfTheMonth', 'featuredAuthors'));
+        return view('welcome', compact('popularBooks', 'popularAuthors'));
     }
 }

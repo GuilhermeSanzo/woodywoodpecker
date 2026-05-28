@@ -142,6 +142,7 @@ The following tables and models have been established as part of the initial mig
 - [x] Implement global search functionality with navbar input and dedicated results page
 - [x] Add real-time AJAX search and descending sort to dashboard CRUD tables
 - [x] Expand real-time search and descending sort to all administrative CRUDs (Users, Genres, Publishers, Stores)
+- [x] Track views and display most visited books and authors on the Home page
 
 ## Style: UI/UX Enhancements
 - [x] Add homogeneous minimalist SVG icons to all global navigation links

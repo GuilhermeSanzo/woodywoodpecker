@@ -1,8 +1,8 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16 gap-4">
-            <div class="flex items-center">
+        <div class="flex justify-between items-center h-16 gap-4 w-full">
+            <div class="flex items-center flex-1 sm:flex-none">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Mobile Search (Visible only on mobile) -->
-                <div class="flex-1 flex sm:hidden items-center px-2">
+                <div class="flex-1 sm:hidden mx-3">
                     <form action="{{ route('search') }}" method="GET" class="w-full">
                         <div class="relative group">
                             <input type="text" name="q" placeholder="{{ __('Search...') }}" class="w-full bg-gray-100 border-transparent focus:bg-white focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-full py-1.5 pl-9 text-xs transition-all duration-300" value="{{ request('q') }}">

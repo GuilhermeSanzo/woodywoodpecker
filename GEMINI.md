@@ -153,6 +153,7 @@ The following tables and models have been established as part of the initial mig
 - [x] Adjust public catalog pagination to 12 items to perfectly fill the 4-column grid
 - [x] Enhance mobile UX with top search bar and avatar in responsive menu
 - [x] Expand mobile search bar to fill available header space
+- [x] Implement full_title accessor on Book model for unified UI display
 
 
 

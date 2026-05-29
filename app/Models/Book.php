@@ -6,10 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Book extends Model
 {
     use HasFactory;
+
+    /**
+     * Get the book's full title (title + subtitle).
+     */
+    protected function fullTitle(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->subtitle 
+                ? "{$this->title}: {$this->subtitle}" 
+                : $this->title,
+        );
+    }
 
     /**
      * The attributes that are mass assignable.

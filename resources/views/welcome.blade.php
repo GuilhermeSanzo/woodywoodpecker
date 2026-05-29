@@ -41,14 +41,14 @@
                 @forelse ($popularBooks as $book)
                     <div class="bg-white overflow-hidden shadow-lg rounded-xl flex flex-col border border-gray-100 transform hover:-translate-y-1 transition duration-300 relative">
                         <a href="{{ route('books.show', $book) }}" class="absolute inset-0 z-0">
-                            <span class="sr-only">View {{ $book->title }}</span>
+                            <span class="sr-only">View {{ $book->full_title }}</span>
                         </a>
                         <div class="p-4 bg-white flex-grow">
                             @if($book->image)
-                                <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->title }}" class="w-full h-72 object-cover mb-4 rounded-lg shadow-sm">
+                                <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->full_title }}" class="w-full h-72 object-cover mb-4 rounded-lg shadow-sm">
                             @endif
                             
-                            <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">{{ $book->title }}</h3>
+                            <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight">{{ $book->full_title }}</h3>
                             <p class="text-sm text-indigo-600 font-medium mb-3">
                                 {{ $book->author?->pseudonym ?? ($book->author?->name ?? 'Unknown Author') }}
                             </p>

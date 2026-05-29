@@ -16,18 +16,18 @@
                         @foreach ($books as $book)
                             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg flex flex-col border border-gray-200 hover:shadow-md transition-shadow duration-300 relative">
                                 <a href="{{ route('books.show', $book) }}" class="absolute inset-0 z-0">
-                                    <span class="sr-only">View {{ $book->title }}</span>
+                                    <span class="sr-only">View {{ $book->full_title }}</span>
                                 </a>
                                 <div class="p-6 flex-grow">
                                     @if($book->image)
-                                        <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->title }}" class="w-full h-48 object-cover mb-4 rounded shadow-sm">
+                                        <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->full_title }}" class="w-full h-48 object-cover mb-4 rounded shadow-sm">
                                     @else
                                         <div class="w-full h-48 bg-gray-100 mb-4 rounded flex items-center justify-center text-gray-400">
                                             <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                                         </div>
                                     @endif
 
-                                    <h3 class="font-semibold text-lg text-gray-900 mb-1 leading-tight">{{ $book->title }}</h3>
+                                    <h3 class="font-semibold text-lg text-gray-900 mb-1 leading-tight">{{ $book->full_title }}</h3>
                                     <p class="text-sm text-gray-600 mb-4 italic">{{ $book->author?->pseudonym ?? ($book->author?->name ?? 'Unknown Author') }}</p>
                                     
                                     <div class="flex justify-between items-center mt-auto">

@@ -1,8 +1,8 @@
-@section('title', $book->title)
+@section('title', $book->full_title)
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $book->title }}
+            {{ $book->full_title }}
         </h2>
     </x-slot>
 
@@ -22,7 +22,7 @@
                         <div class="md:col-span-1">
                             <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
                                 @if($book->image)
-                                    <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->title }}" class="w-full h-auto object-cover">
+                                    <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->full_title }}" class="w-full h-auto object-cover">
                                 @else
                                     <div class="w-full h-96 flex items-center justify-center text-gray-400 italic">
                                         No cover available
@@ -34,10 +34,7 @@
                         <!-- Book Details -->
                         <div class="md:col-span-2 flex flex-col">
                             <div class="mb-6">
-                                <h1 class="text-3xl font-extrabold text-gray-900 mb-2">{{ $book->title }}</h1>
-                                @if($book->subtitle)
-                                    <p class="text-xl text-gray-600 italic mb-4">{{ $book->subtitle }}</p>
-                                @endif
+                                <h1 class="text-3xl font-extrabold text-gray-900 mb-2">{{ $book->full_title }}</h1>
                                 
                                 <div class="flex items-center text-lg text-indigo-600 font-semibold mb-6">
                                     <span class="mr-2">by</span>
